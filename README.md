@@ -1,4 +1,4 @@
-# TFTP-Client-Server-Implementation-
+# TFTP-Client-Server-Implementation
 The scope of the project is to provide implementation of TFTP Service (UDP based) involving a client and a server. The server handles the client's ftp request and performs file download after validation. Server may optionally handle multiple client ftp requests simultaneously. The protocol implemented shall follow the RFC1350 specification.
 
 :black_medium_small_square: TFTP_01	The implementation will follow RFC 1350 (i.e ftp using UDP) 
@@ -26,3 +26,10 @@ The scope of the project is to provide implementation of TFTP Service (UDP based
 :black_medium_small_square: TFTP_12	Standard error codes to be used to indicate specific error cases as in RFC.
 
 :black_medium_small_square: TFTP_13	"Should include debug log messages  with atleast 4 levels (FATA, INFO, WARNING, DEBUG) 
+
+##Team members Group 5
+###1️⃣ Sravanthi Desham
+###2️⃣ Sumit Tomar
+###3️⃣ Puja Kumari
+###4️⃣ Jaya Naga Sai Jaswanth Kuricheti
+###5️⃣ Pratik Roy
