@@ -8,7 +8,7 @@
  **  
  **  DATE	    NAME		   REFERENCE	    REASON
  **  ------------------------------------------------------------------------------------
- **  29 Mar 2022    Pratik Roy        	   Class test       Creation of the header file
+ **  29 Mar 2022    
  **
  **
  **  Copyright @ 2022 Capgemini Engineering All Rights Reserved
@@ -23,13 +23,13 @@
 # include <stdlib.h>
 
 /*******************************************************************
- **  FUNCTION NAME	: myFunc
+ **  FUNCTION NAME	: 
  **
- **  DESCRIPTION	: To make an executable command 
+ **  DESCRIPTION	: 
  **
- **  PARAMETERS		: Number of arguments, Double pointer to 
- 			  argument variables
+ **  PARAMETERS		:  
+ 			  
  **
- **  RETURN 		: 0 else exit with 1 
+ **  RETURN 		:  
  **
  ******************************************************************/
