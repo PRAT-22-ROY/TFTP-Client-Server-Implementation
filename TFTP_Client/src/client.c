@@ -1,7 +1,7 @@
 /**********************************************************************************************
  **  FILENAME	      : 	
  **
- **  DESCRIPTION      : This is client
+ **  DESCRIPTION      : 
  ** 
  **
  **  REVISION HISTORY :

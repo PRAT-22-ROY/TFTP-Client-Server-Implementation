@@ -1,7 +1,7 @@
 /**********************************************************************************************
  **  FILENAME	      : 	
  **
- **  DESCRIPTION      : This is server
+ **  DESCRIPTION      : 
  ** 
  **
  **  REVISION HISTORY :
