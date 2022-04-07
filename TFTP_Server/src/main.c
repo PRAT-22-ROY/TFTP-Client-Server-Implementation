@@ -87,19 +87,21 @@ int main(void){
 	buf[numbytes] = '\0';
 	printf("SERVER: packet contains \"%s\"\n", buf);
 
-	if(buf[0] == '0' && buf[1] == '1'){//READ REQUEST
+	if(buf[0] == '0' && buf[1] == '1')
+	{//READ REQUEST
+		readRequest(sockfd, buf, their_addr, addr_len, numbytes, p,  s);	
 
-
-	} else if(buf[0] == '0' && buf[1] == '2'){//WRITE REQUEST
-
-	} else {
+	}
+       	else if(buf[0] == '0' && buf[1] == '2')
+	{//WRITE REQUEST
+		writeRequest(sockfd, buf, their_addr, addr_len, numbytes, s);
+	} 
+	else 
+	{
 		fprintf(stderr,"INVALID REQUEST\n");
 		exit(1);
 	}
 	//===========MAIN IMPLEMENTATION - ENDS===========
-
-
 	close(sockfd);
-	
 	return 0;
 }
