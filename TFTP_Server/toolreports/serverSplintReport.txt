@@ -1,0 +1,185 @@
+Splint 3.1.2 --- 20 Feb 2018
+
+< Location unknown >: Field name reused: 
+  Code cannot be parsed.  For help on parse errors, see splint -help
+  parseerrors. (Use -syntax to inhibit warning)
+< Location unknown >: Previous use of 
+server.c: (in function numberToString)
+server.c:43:13: Incompatible types for + (int, char): num + '0'
+  A character constant is used as an int. Use +charintliteral to allow
+  character constants to be used as ints.  (This is safe since the actual type
+  of a char constant is int.)
+server.c:48:18: Incompatible types for + (int, char): (num % 10) + '0'
+server.c:49:18: Incompatible types for + (int, char): (num / 10) + '0'
+server.c: (in function makeDataPacket)
+server.c:72:17: Passed storage temp not completely defined (*temp is
+                   undefined): numberToString (temp, ...)
+  Storage derivable from a parameter, return value or global is not defined.
+  Use /*@out@*/ to denote passed or returned storage which need not be defined.
+  (Use -compdef to inhibit warning)
+server.c:74:9: Possibly null storage packet passed as non-null param:
+                  strcpy (packet, ...)
+  A possibly null pointer is passed as a parameter corresponding to a formal
+  parameter with no /*@null@*/ annotation.  If NULL may be used for this
+  parameter, add a /*@null@*/ annotation to the function parameter declaration.
+  (Use -nullpass to inhibit warning)
+   server.c:73:11: Storage packet may become null
+server.c: (in function makeACK)
+server.c:93:9: Possibly null storage packet passed as non-null param:
+                  strcpy (packet, ...)
+   server.c:92:11: Storage packet may become null
+server.c: (in function makeERR)
+server.c:112:9: Possibly null storage packet passed as non-null param:
+                   memset (packet, ...)
+   server.c:110:11: Storage packet may become null
+server.c: (in function logMessage)
+server.c:145:27: Passed storage timeStamp not completely defined (*timeStamp is
+                    undefined): fprintf (..., timeStamp, ...)
+server.c:148:2: Return value (type int) ignored: vfprintf(logFptr...
+  Result returned by function call is not used. If this is intended, can cast
+  result to (void) to eliminate message. (Use -retvalint to inhibit warning)
+server.c: (in function logOpen)
+server.c:169:2: Return value (type __mode_t) ignored: umask(oldPerms)
+  Result returned by function call is not used. If this is intended, can cast
+  result to (void) to eliminate message. (Use -retvalother to inhibit warning)
+server.c: (in function logClose)
+server.c:193:2: Return value (type int) ignored: fclose(logFptr)
+server.c: (in function getAddress)
+server.c:210:10: Immediate address &sa->sin_addr returned as implicitly only:
+                    &(((struct sockaddr_in *)sa)->sin_addr)
+  An immediate address (result of & operator) is transferred inconsistently.
+  (Use -immediatetrans to inhibit warning)
+server.c:212:9: Immediate address &sa->sin6_addr returned as implicitly only:
+                   &(((struct sockaddr_in6 *)sa)->sin6_addr)
+server.c: (in function checkTimeout)
+server.c:231:112: Operands of < have incompatible types (unsigned int,
+    arbitrary unsigned integral type): __i < sizeof(fd_set) / sizeof(__fd_mask)
+  To ignore type qualifiers in type comparisons use +ignorequals.
+server.c:232:103: Right operand of << may be negative (int):
+                     1UL << ((sockfd) % (8 * (int)sizeof(__fd_mask)))
+  The right operand to a shift operator may be negative (behavior undefined).
+  (Use -shiftnegative to inhibit warning)
+server.c:232:11: Value fds.__fds_bits[] used before definition
+  An rvalue is used that may not be initialized to a value on some execution
+  path. (Use -usedef to inhibit warning)
+server.c:239:31: Null storage passed as non-null param: select (..., NULL, ...)
+server.c:239:37: Null storage passed as non-null param: select (..., NULL, ...)
+server.c:248:13: Only storage fds.__fds_bits[] (type __fd_mask) derived from
+    variable declared in this scope is not released (memory leak)
+  A storage leak due to incomplete deallocation of a structure or deep pointer
+  is suspected. Unshared storage that is reachable from a reference that is
+  being deallocated has not yet been deallocated. Splint assumes when an object
+  is passed as an out only void pointer that the outer object will be
+  deallocated, but the inner objects will not. (Use -compdestroy to inhibit
+  warning)
+server.c:250:9: Return value type ssize_t does not match declared type int:
+    recvfrom(sockfd, buf, 550 - 1, 0, (struct sockaddr *)&their_addr,
+    &addr_len)
+  To allow arbitrary integral types to match any integral type, use
+  +matchanyintegral.
+server.c:250:86: Only storage fds.__fds_bits[] (type __fd_mask) derived from
+    variable declared in this scope is not released (memory leak)
+server.c: (in function maxTries)
+server.c:284:8: Assignment of ssize_t to int:
+                   temp_bytes = sendto(sockfd, t_msg, strlen(t_msg), 0,
+                   res->ai_addr, res->ai_addrlen)
+server.c: (in function readRequest)
+server.c:325:4: Return value (type ssize_t) ignored: sendto(sockfd, e...
+server.c:332:3: Return value (type int) ignored: fseek(fp, 0, SEE...
+server.c:333:15: Variable total initialized to type long int, expects int:
+                    ftell(fp)
+server.c:334:3: Return value (type int) ignored: fseek(fp, 0, SEE...
+server.c:346:5: Return value (type size_t) ignored: fread(temp, 512,...
+server.c:352:17: Function fread expects arg 2 to be size_t gets int: remaining
+server.c:352:5: Return value (type size_t) ignored: fread(temp, rema...
+server.c:358:8: Assignment of ssize_t to int:
+                   numbytes = sendto(sockfd, t_msg, strlen(t_msg), 0, (struct
+                   sockaddr *)&their_addr, addr_len)
+server.c:370:25: Fresh storage t_msg not released before return
+  A memory leak has been detected. Storage allocated locally is not released
+  before the last reference to it is lost. (Use -mustfreefresh to inhibit
+  warning)
+   server.c:357:4: Fresh storage t_msg created
+server.c:373:53: Function inet_ntop expects arg 1 to be int gets sa_family_t:
+                    their_addr.ss_family
+  Types are incompatible. (Use -type to inhibit warning)
+server.c:373:131: Function inet_ntop expects arg 4 to be socklen_t gets size_t:
+                     sizeof(dst)
+server.c:373:75: New fresh storage (type void *) passed as implicitly temp (not
+                    released): getAddress((struct sockaddr *)&their_addr)
+server.c:373:119: Passed storage dst not completely defined (*dst is
+                     undefined): inet_ntop (..., dst, ...)
+server.c:373:43: New fresh storage (type char *) passed as implicitly temp (not
+    released): inet_ntop(their_addr.ss_family, getAddress((struct sockaddr
+    *)&their_addr), dst, sizeof(dst))
+server.c:382:3: Return value (type int) ignored: fclose(fp)
+server.c: (in function writeRequest)
+server.c:410:6: Assignment of ssize_t to int:
+    numbytes = sendto(sockfd, message, strlen(message), 0, (struct sockaddr
+    *)&their_addr, addr_len)
+server.c:421:8: Assignment of ssize_t to int:
+                   numbytes = recvfrom(sockfd, buf, 550 - 1, 0, (struct
+                   sockaddr *)&their_addr, &addr_len)
+server.c:426:52: Function inet_ntop expects arg 1 to be int gets sa_family_t:
+                    their_addr.ss_family
+server.c:426:130: Function inet_ntop expects arg 4 to be socklen_t gets size_t:
+                     sizeof(dst)
+server.c:426:74: New fresh storage (type void *) passed as implicitly temp (not
+                    released): getAddress((struct sockaddr *)&their_addr)
+server.c:426:118: Passed storage dst not completely defined (*dst is
+                     undefined): inet_ntop (..., dst, ...)
+server.c:426:42: New fresh storage (type char *) passed as implicitly temp (not
+    released): inet_ntop(their_addr.ss_family, getAddress((struct sockaddr
+    *)&their_addr), dst, sizeof(dst))
+server.c:444:5: Return value (type ssize_t) ignored: sendto(sockfd, e...
+server.c:455:5: Return value (type ssize_t) ignored: sendto(sockfd, e...
+server.c:465:4: Return value (type ssize_t) ignored: sendto(sockfd, l...
+server.c:469:3: Assignment of size_t to int: c_written = strlen(buf + 4)
+server.c:470:31: Function fwrite expects arg 3 to be size_t gets int: c_written
+server.c:470:42: Variable fp used before definition
+server.c:470:3: Return value (type size_t) ignored: fwrite(buf + 4, ...
+server.c:478:7: Assignment of ssize_t to int:
+                   numbytes = sendto(sockfd, t_msg, strlen(t_msg), 0, (struct
+                   sockaddr *)&their_addr, addr_len)
+server.c:490:2: Return value (type int) ignored: fclose(fp)
+server.c: (in function logger)
+server.c:516:5: Unrecognized identifier: localtime_r
+  Identifier used in code has not been declared. (Use -unrecog to inhibit
+  warning)
+server.c:517:5: Unrecognized identifier: asctime_r
+server.c:523:13: Buffer overflow possible with sprintf.  Recommend using
+                    snprintf instead: sprintf
+  Use of function that may lead to buffer overflow. (Use -bufferoverflowhigh to
+  inhibit warning)
+server.c:525:63: Passed storage TIMESTAMP not completely defined (*TIMESTAMP is
+                    undefined): fprintf (..., TIMESTAMP, ...)
+server.c:525:21: Possibly null storage logfile passed as non-null param:
+                    fprintf (logfile, ...)
+   server.c:524:23: Storage logfile may become null
+server.c:526:13: Return value (type int) ignored: fclose(logfile)
+server.c:529:13: Buffer overflow possible with sprintf.  Recommend using
+                    snprintf instead: sprintf
+server.c:531:63: Passed storage TIMESTAMP not completely defined (*TIMESTAMP is
+                    undefined): fprintf (..., TIMESTAMP, ...)
+server.c:531:21: Possibly null storage logfile passed as non-null param:
+                    fprintf (logfile, ...)
+   server.c:530:23: Storage logfile may become null
+server.c:532:13: Return value (type int) ignored: fclose(logfile)
+server.c:535:13: Buffer overflow possible with sprintf.  Recommend using
+                    snprintf instead: sprintf
+server.c:537:63: Passed storage TIMESTAMP not completely defined (*TIMESTAMP is
+                    undefined): fprintf (..., TIMESTAMP, ...)
+server.c:537:21: Possibly null storage logfile passed as non-null param:
+                    fprintf (logfile, ...)
+   server.c:536:23: Storage logfile may become null
+server.c:538:13: Return value (type int) ignored: fclose(logfile)
+server.c:541:13: Buffer overflow possible with sprintf.  Recommend using
+                    snprintf instead: sprintf
+server.c:543:63: Passed storage TIMESTAMP not completely defined (*TIMESTAMP is
+                    undefined): fprintf (..., TIMESTAMP, ...)
+server.c:543:21: Possibly null storage logfile passed as non-null param:
+                    fprintf (logfile, ...)
+   server.c:542:23: Storage logfile may become null
+server.c:544:13: Return value (type int) ignored: fclose(logfile)
+
+Finished checking --- 72 code warnings

@@ -4,7 +4,7 @@ INCLUDEPATH = ./../include
 SRCPATH = ./../src
 OBJPATH = ./../obj
 BINPATH = ./../bin
-
+LOGPATH = ./../logs
 
 $(BINPATH)/main: $(OBJPATH)/main.o $(OBJPATH)/server.o
 	$(CC) $(CFLAGS) -o main $(OBJPATH)/main.o $(OBJPATH)/server.o
@@ -20,3 +20,6 @@ $(OBJPATH)/server.o: $(SRCPATH)/server.c $(INCLUDEPATH)/SERVER_UTILITY.h
 
 clear:
 	rm $(BINPATH)/main $(OBJPATH)/main.o $(OBJPATH)/server.o
+
+clearlogs:
+	rm -f $(LOGPATH)/*.log

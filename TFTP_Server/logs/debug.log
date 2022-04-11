@@ -1,0 +1,21 @@
+~~Mon Apr 11 14:31:03 2022
+[./../src/server.c : 560]	Server: Read request
+----------
+~~Mon Apr 11 14:31:03 2022
+[./../src/server.c : 560]	Server: Write request
+----------
+~~Mon Apr 11 14:31:03 2022
+[./../src/server.c : 560]	Server: Receiving packet data
+----------
+~~Mon Apr 11 14:31:03 2022
+[./../src/server.c : 560]	Server: Receiving packet data
+----------
+~~Mon Apr 11 14:31:03 2022
+[./../src/server.c : 560]	Server: Receiving packet data
+----------
+~~Mon Apr 11 14:31:03 2022
+[./../src/server.c : 560]	Server: Receiving packet data
+----------
+~~Mon Apr 11 14:31:03 2022
+[./../src/server.c : 560]	Server: Receiving packet data
+----------

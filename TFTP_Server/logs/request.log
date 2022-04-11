@@ -1,0 +1,164 @@
+10-04-2022 12:32:46: opened log file
+10-04-2022 12:33:01: Server received READ REQUEST(RRQ) from 10.0.2.15 
+
+10-04-2022 12:33:08: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 12:33:17: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 12:33:27: Server received READ REQUEST(RRQ) from 10.0.2.15 
+
+10-04-2022 12:33:40: closing log file
+10-04-2022 13:06:49: opened log file
+10-04-2022 13:07:36: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 13:07:41: Server received READ REQUEST(RRQ) from 10.0.2.15 
+
+10-04-2022 13:07:45: Server received READ REQUEST(RRQ) from 10.0.2.15 
+
+10-04-2022 13:07:51: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 13:07:59: closing log file
+10-04-2022 13:10:20: opened log file
+10-04-2022 13:11:01: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 13:11:09: Server received READ REQUEST(RRQ) from 10.0.2.15 
+
+10-04-2022 13:11:12: Server received READ REQUEST(RRQ) from 10.0.2.15 
+
+10-04-2022 13:11:18: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 13:14:38: closing log file
+10-04-2022 13:41:06: opened log file
+10-04-2022 13:41:19: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 13:41:51: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 13:42:54: closing log file
+10-04-2022 13:42:56: opened log file
+10-04-2022 13:42:58: closing log file
+10-04-2022 13:43:11: opened log file
+10-04-2022 13:43:14: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 13:43:23: Server received READ REQUEST(RRQ) from 10.0.2.15 
+
+10-04-2022 13:43:29: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 13:43:37: Server received READ REQUEST(RRQ) from 10.0.2.15 
+
+10-04-2022 13:43:44: closing log file
+10-04-2022 18:22:07: opened log file
+10-04-2022 18:22:25: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 18:23:18: Server received READ REQUEST(RRQ) from 10.0.2.15 
+
+10-04-2022 18:23:24: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 18:23:29: Server received READ REQUEST(RRQ) from 10.0.2.15 
+
+10-04-2022 18:27:28: closing log file
+10-04-2022 18:27:39: opened log file
+10-04-2022 18:28:10: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 18:28:24: Server received READ REQUEST(RRQ) from 10.0.2.15 
+
+10-04-2022 18:28:32: Server received READ REQUEST(RRQ) from 10.0.2.15 
+
+10-04-2022 18:28:36: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 18:31:41: closing log file
+10-04-2022 18:32:40: opened log file
+10-04-2022 18:32:47: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 18:33:08: closing log file
+10-04-2022 18:33:38: opened log file
+10-04-2022 18:33:44: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 18:33:56: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 18:34:52: closing log file
+10-04-2022 18:35:05: opened log file
+10-04-2022 18:35:19: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 18:35:25: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 18:37:27: closing log file
+10-04-2022 18:37:37: opened log file
+10-04-2022 18:37:43: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 18:39:40: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 18:40:37: closing log file
+10-04-2022 19:03:21: opened log file
+10-04-2022 19:03:45: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 19:04:05: Server received WRITE REQUEST(WRQ) from 10.0.2.15 
+
+10-04-2022 19:04:38: Server received READ REQUEST(RRQ) from 10.0.2.15 
+
+10-04-2022 19:04:44: Server received READ REQUEST(RRQ) from 10.0.2.15 
+
+10-04-2022 19:05:15: closing log file
+11-04-2022 01:52:21: opened log file
+11-04-2022 01:52:42: Server received WRITE REQUEST(WRQ) from 127.0.0.1 
+
+11-04-2022 01:54:57: Server received WRITE REQUEST(WRQ) from 127.0.0.1 
+
+11-04-2022 02:15:49: closing log file
+11-04-2022 02:16:05: opened log file
+11-04-2022 02:16:16: Server received WRITE REQUEST(WRQ) from 127.0.0.1 
+
+11-04-2022 02:18:24: closing log file
+11-04-2022 02:33:23: opened log file
+11-04-2022 02:33:37: Server received WRITE REQUEST(WRQ) from 127.0.0.1 
+
+11-04-2022 02:33:41: closing log file
+11-04-2022 02:36:50: opened log file
+11-04-2022 02:36:54: Server received WRITE REQUEST(WRQ) from 127.0.0.1 
+
+11-04-2022 02:36:56: closing log file
+11-04-2022 02:38:33: opened log file
+11-04-2022 02:38:39: Server received WRITE REQUEST(WRQ) from 127.0.0.1 
+
+11-04-2022 02:38:51: closing log file
+11-04-2022 02:42:12: opened log file
+11-04-2022 02:42:19: Server received WRITE REQUEST(WRQ) from 127.0.0.1 
+
+11-04-2022 02:42:21: closing log file
+11-04-2022 08:38:07: opened log file
+11-04-2022 08:38:28: Server received WRITE REQUEST(WRQ) from 127.0.0.1 
+
+11-04-2022 08:38:35: closing log file
+11-04-2022 10:46:11: opened log file
+11-04-2022 10:46:47: Server received WRITE REQUEST(WRQ) from 127.0.0.1 
+
+11-04-2022 10:47:16: Server received READ REQUEST(RRQ) from 127.0.0.1 
+
+11-04-2022 10:47:53: Server received READ REQUEST(RRQ) from 127.0.0.1 
+
+11-04-2022 10:48:43: closing log file
+11-04-2022 10:55:46: opened log file
+11-04-2022 10:56:25: Server received WRITE REQUEST(WRQ) from 127.0.0.1 
+
+11-04-2022 10:56:40: closing log file
+11-04-2022 10:57:07: opened log file
+11-04-2022 10:57:28: Server received WRITE REQUEST(WRQ) from 127.0.0.1 
+
+11-04-2022 10:58:00: Server received READ REQUEST(RRQ) from 127.0.0.1 
+
+11-04-2022 10:58:12: closing log file
+11-04-2022 10:59:39: opened log file
+11-04-2022 11:00:32: Server received WRITE REQUEST(WRQ) from 127.0.0.1 
+
+11-04-2022 11:01:26: Server received READ REQUEST(RRQ) from 127.0.0.1 
+
+11-04-2022 11:01:34: closing log file
+11-04-2022 11:03:45: opened log file
+11-04-2022 11:05:02: Server received WRITE REQUEST(WRQ) from 127.0.0.1 
+
+11-04-2022 11:05:26: Server received READ REQUEST(RRQ) from 127.0.0.1 
+
+11-04-2022 11:06:21: closing log file
+11-04-2022 14:30:27: opened log file
+11-04-2022 14:31:04: Server received WRITE REQUEST(WRQ) from 127.0.0.1 
+
+11-04-2022 14:31:13: closing log file

@@ -14,87 +14,196 @@
  **  Copyright @ 2022 Capgemini Engineering All Rights Reserved
  **
  ********************************************************************************************/
+
+/***************************************
+ * 		INCLUDES
+ **************************************/
 #include "SERVER_UTILITY.h"
-// converts block number to length-2 string
-void s_to_i(char *f, int n){
-	if(n==0){
-		f[0] = '0', f[1] = '0', f[2] = '\0';
-	} else if(n%10 > 0 && n/10 == 0){
-		char c = n+'0';
-		f[0] = '0', f[1] = c, f[2] = '\0';
-	} else if(n%100 > 0 && n/100 == 0){
-		char c2 = (n%10)+'0';
-		char c1 = (n/10)+'0';
-		f[0] = c1, f[1] = c2, f[2] = '\0';
-	} else {
-		f[0] = '9', f[1] = '9', f[2] = '\0';
+
+static FILE *logFptr;
+
+/***************************************************************************
+ **  FUNCTION NAME	: numberToString
+ **
+ **  DESCRIPTION	: Converts block number to string of length 2
+ **
+ **  PARAMETERS		: char *temp, int num
+ **
+ **  RETURN 		: void
+ **
+ **************************************************************************/
+void numberToString(char *temp, int num)
+{
+	if(num==0)
+	{
+		temp[0] = '0', temp[1] = '0', temp[2] = '\0';
+	} 
+	else if(num%10 > 0 && num/10 == 0)
+	{
+		char ch = num+'0';
+		temp[0] = '0', temp[1] = ch, temp[2] = '\0';
+	} 
+	else if(num%100 > 0 && num/100 == 0)
+	{
+		char charTwo = (num%10)+'0';
+		char charOne = (num/10)+'0';
+		temp[0] = charOne, temp[1] = charTwo, temp[2] = '\0';
+	}
+       	else 
+	{
+		temp[0] = '9', temp[1] = '9', temp[2] = '\0';
 	}
 }
 
-// makes RRQ packet
-char* make_rrq(char *filename){
-	char *packet;
-	packet = malloc(2+strlen(filename));
-	memset(packet, 0, sizeof(packet));
-	strcat(packet, "01");//opcode
-	strcat(packet, filename);
-	return packet;
-}
 
-// makes WRQ packet
-char* make_wrq(char *filename){
-	char *packet;
-	packet = malloc(2+strlen(filename));
-	memset(packet, 0, sizeof(packet));
-	strcat(packet, "02");//opcode
-	strcat(packet, filename);
-	return packet;
-}
-
-// makes data packet
-char* make_data_pack(int block, char *data){
+/*******************************************************************
+ **  FUNCTION NAME	: makeDataPacket
+ **
+ **  DESCRIPTION	: Makes data packet
+ **
+ **  PARAMETERS		: int block, char *data
+ **
+ **  RETURN 		: packet
+ **
+ ******************************************************************/
+char* makeDataPacket(int block, char *data){
 	char *packet;
 	char temp[3];
-	s_to_i(temp, block);
-	packet = malloc(4+strlen(data));
-	memset(packet, 0, sizeof (packet));
-	strcat(packet, "03");//opcode
+	numberToString(temp, block);
+	packet = malloc(4+strlen(data)+1);
+	strcpy(packet, "03");//opcode
 	strcat(packet, temp);
 	strcat(packet, data);
 	return packet;
 }
 
-// makes ACK packet
-char* make_ack(char* block){
+/*******************************************************************
+ **  FUNCTION NAME	: makeACK
+ **
+ **  DESCRIPTION	: Makes acknowledgement packet
+ **
+ **  PARAMETERS		: char* block
+ **
+ **  RETURN 		: packet
+ **
+ ******************************************************************/
+char* makeACK(char* block){
 	char *packet;
-	packet = malloc(2+strlen(block));
-	memset(packet, 0, sizeof (packet));
-	strcat(packet, "04");//opcode
+	packet = malloc(2+strlen(block)+1);
+	strcpy(packet, "04");//opcode
 	strcat(packet, block);
 	return packet;
 }
 
-// makes ERR packet
-char* make_err(char *errcode, char* errmsg){
+/*******************************************************************
+ **  FUNCTION NAME	: makeERR
+ **
+ **  DESCRIPTION	: Makes error packet 
+ **
+ **  PARAMETERS		: char *errcode, char* errmsg
+ **
+ **  RETURN 		: packet
+ **
+ ******************************************************************/
+char* makeERR(char *errcode, char* errmsg){
 	char *packet;
-	packet = malloc(4+strlen(errmsg));
-	memset(packet, 0, sizeof (packet));
+	packet = malloc(4+strlen(errmsg)+1);
+	size_t len=sizeof(packet);
+	memset(packet, 0, len);
 	strcat(packet, "05");//opcode
 	strcat(packet, errcode);
 	strcat(packet, errmsg);
 	return packet;
 } 
+
+/***********************************************************************
+ **  FUNCTION NAME	: logMessage
+ **
+ **  DESCRIPTION	: Maintaining logs of all requests from client
+ **
+ **  PARAMETERS		: const char *format, ....
+ **
+ **  RETURN 		: void
+ **
+ **********************************************************************/
+void logMessage(const char *format,...)
+{
+	va_list argList;
+	const char *TIMEFORMAT = "%d-%m-%Y %X";
+	#define DATESIZE sizeof("DD-MM-YYYY HH:MM:SS")
+	char timeStamp[DATESIZE];
+	time_t t;
+	struct tm *tmVar;
+	t = time(NULL);
+	tmVar = localtime(&t);
+	if(tmVar == NULL || strftime(timeStamp,DATESIZE,TIMEFORMAT,tmVar) == 0)
+	{
+		fprintf(logFptr, "***Unknown time***: ");
+	}
+	else
+	{
+		fprintf(logFptr, "%s: ",timeStamp);
+	}
+	va_start(argList, format);
+	vfprintf(logFptr, format, argList);
+	fprintf(logFptr,"\n");
+	va_end(argList);
+
+}
+
 /*******************************************************************
- **  FUNCTION NAME	: get_in_addr
+ **  FUNCTION NAME	: getAddress
+ **
+ **  DESCRIPTION	: Opening the log file
+ **
+ **  PARAMETERS		: const char *logFileName
+ **
+ **  RETURN 		: void
+ **
+ ******************************************************************/
+void logOpen(const char *logFileName)
+{
+	mode_t oldPerms;
+	oldPerms = umask(077);
+	logFptr = fopen(logFileName, "a");
+	umask(oldPerms);
+	if(logFptr == NULL)
+	{
+		perror("logfile open");
+		exit(EXIT_FAILURE);
+	}
+	setbuf(logFptr, NULL);
+	logMessage("opened log file");
+
+}
+
+/*******************************************************************
+ **  FUNCTION NAME	: logClose
+ **
+ **  DESCRIPTION	: Closes the log file
+ **
+ **  PARAMETERS		: void
+ **
+ **  RETURN 		: void
+ **
+ ******************************************************************/
+void logClose(void)
+{
+	logMessage("closing log file");
+	fclose(logFptr);
+}
+
+/*******************************************************************
+ **  FUNCTION NAME	: getAddress
  **
  **  DESCRIPTION	: 
  **
  **  PARAMETERS		: 
  **
- **  RETURN 		: 
+ **  RETURN 		: void
  **
  ******************************************************************/
-void *get_in_addr(struct sockaddr *sa)
+void *getAddress(struct sockaddr *sa)
 {
 	if (sa->sa_family == AF_INET) 
 	{
@@ -104,111 +213,127 @@ void *get_in_addr(struct sockaddr *sa)
 }
 
 /*******************************************************************
- **  FUNCTION NAME	: check_timeout
+ **  FUNCTION NAME	: checkTimeout
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Checks for the timeout condition
  **
- **  PARAMETERS		: 
+ **  PARAMETERS		:
  **
  **  RETURN 		: 
  **
  ******************************************************************/
-//CHECKS FOR TIMEOUT
-int check_timeout(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len)
-{
+int checkTimeout(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len){
 	fd_set fds;
-	int n;
+	int ret;
 	struct timeval tv;
 
-	// set up the file descriptor set
+	/* Setting up the file descriptor set */
 	FD_ZERO(&fds);
 	FD_SET(sockfd, &fds);
 
-	// set up the struct timeval for the timeout
+	/* Setting up the struct timeval for the timeout */
 	tv.tv_sec = TIME_OUT;
 	tv.tv_usec = 0;
 
-	// wait until timeout or data received
-	n = select(sockfd+1, &fds, NULL, NULL, &tv);
-	if (n == 0)
+	/* Waiting until timeout or data received */
+	ret = select(sockfd+1, &fds, NULL, NULL, &tv);
+	if (ret == 0)
 	{
 		printf("timeout\n");
-		return -2; // timeout!
+		logger("Server: Timeout",'w',__LINE__);
+		return -2; /* Timeout */
 	} 
-	else if (n == -1)
+	else if (ret == -1)
 	{
 		printf("error\n");
-		return -1; // error	
+		return -1; /* Error */
 	}
 	return recvfrom(sockfd, buf, MAXBUFLEN-1 , 0, (struct sockaddr *)&their_addr, &addr_len);
 }
 
 /*******************************************************************
- **  FUNCTION NAME	: 
+ **  FUNCTION NAME	: maxTries
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: The maximum number of tries the host will
+ 			  try to send the packet to the other host
  **
  **  PARAMETERS		: 
  **
- **  RETURN 		: 
+ **  RETURN 		: numbytes
  **
  ******************************************************************/
-int maxTries(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len, int numbytes, struct addrinfo *p, char *t_msg)
-{
+int maxTries(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len, struct addrinfo *res, char *t_msg){
 	int times;
+	int numbytes;
 	for(times=0;times<=MAX_TRIES;++times)
 	{
 		if(times == MAX_TRIES)
 		{
 			printf("SERVER: MAX NUMBER OF TRIES REACHED\n");
-			return EXIT_FAILURE;
+			logger("Server: Max number of tries reached",'f',__LINE__);
+			return -1;
 		}
-		numbytes = check_timeout(sockfd, buf, their_addr, addr_len);
+		numbytes = checkTimeout(sockfd, buf, their_addr, addr_len);
 		if(numbytes == -1)
-		{//error
-			perror("SERVER: recvfrom");
-			return EXIT_FAILURE;
-		} else if(numbytes == -2)
-		{//timeout
+		{	/* Error */
+			logger("Server: recvfrom",'f',__LINE__);
+			errorHandler(numbytes,"SERVER: recvfrom");
+		} 
+		else if(numbytes == -2)
+		{	/* Timeout */
 			printf("SERVER: try no. %d\n", times+1);
 			int temp_bytes;
-			if((temp_bytes = sendto(sockfd, t_msg, strlen(t_msg), 0, p->ai_addr, p->ai_addrlen)) == -1){
-				perror("SERVER: ACK: sendto");
-				return EXIT_FAILURE;
-		}
+			if((temp_bytes = sendto(sockfd, t_msg, strlen(t_msg), 0, res->ai_addr, res->ai_addrlen)) == -1)
+			{
+				logger("Server: sendto",'f',__LINE__);
+				errorHandler(temp_bytes,"SERVER: ACK: sendto");
+			}
 			printf("SERVER: sent %d bytes AGAIN\n", temp_bytes);
+			logger("Server: send bytes again",'i',__LINE__);
 			continue;
-		} else 
-		{ //valid
-			return EXIT_SUCCESS;
+		} 
+		else 
+		{ 
+			/* Valid condition */
+			break;
 		}
 	}
+	return numbytes;
 }
 /*******************************************************************
  **  FUNCTION NAME	: readRequest
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Server upon receiving read request
  **
  **  PARAMETERS		: 
  **
  **  RETURN 		: 
  **
  ******************************************************************/
-int readRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len, int numbytes, struct addrinfo *p, char s[])
+int readRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len, struct addrinfo *res)
 {
 		char filename[MAX_FILENAME_LEN];
+		int numbytes;
+		char *t_msg;
+		char dst[INET6_ADDRSTRLEN];
 		strcpy(filename, buf+2);
-
+		
 		FILE *fp = fopen(filename, "rb");
-		if(fp == NULL || access(filename, F_OK) == -1){ //SENDING ERROR PACKET - FILE NOT FOUND
+		if(fp == NULL || access(filename, F_OK) == -1)
+		{ 	
+			/* Sending error packet - File not found */
 			fprintf(stderr,"SERVER: file '%s' does not exist, sending error packet\n", filename);
-			char *e_msg = make_err("02", "ERROR_FILE_NOT_FOUND");
+			char *e_msg = makeERR("02", "ERROR_FILE_NOT_FOUND");
+			logger("Server: Error file not found",'w',__LINE__);
 			printf("%s\n", e_msg);
+			logger("Server: Sendto()",'d',__LINE__);
 			sendto(sockfd, e_msg, strlen(e_msg), 0, (struct sockaddr *)&their_addr, addr_len);
-			exit(1);
+			free(e_msg);
+			return EXIT_FAILURE;
 		}
-
-		//STARTING TO SEND FILE
+		
+		/* Starting to send file */
+		logger("Starting to send file",'d',__LINE__);
 		int block = 1;
 		fseek(fp, 0, SEEK_END);
 		int total = ftell(fp);
@@ -218,127 +343,246 @@ int readRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, sockl
 			++remaining;
 		else if(remaining%MAX_READ_LEN == 0)
 			--remaining;
-
-		while(remaining>0){
-			//READING FILE
+		while(remaining>0)
+		{
+			/* Reading the file */
 			char temp[MAX_READ_LEN+5];
-			if(remaining>MAX_READ_LEN){
+			if(remaining>MAX_READ_LEN)
+			{
 				fread(temp, MAX_READ_LEN, sizeof(char), fp);
 				temp[MAX_READ_LEN] = '\0';
 				remaining -= (MAX_READ_LEN);
-			} else {
+			} 
+			else 
+			{
 				fread(temp, remaining, sizeof(char), fp);
 				temp[remaining] = '\0';
 				remaining = 0;
 			}
-
-			//SENDING - DATA PACKET
-			char *t_msg = make_data_pack(block, temp);
-			if((numbytes = sendto(sockfd, t_msg, strlen(t_msg), 0, (struct sockaddr *)&their_addr, addr_len)) == -1){
-				perror("SERVER ACK: sendto");
-				exit(1);
+			/* Sending data packet */ 
+			t_msg = makeDataPacket(block, temp);
+			if((numbytes = sendto(sockfd, t_msg, strlen(t_msg), 0, (struct sockaddr *)&their_addr, addr_len)) == -1)
+			{
+				logger("Server: ACK sendto",'f',__LINE__);
+				errorHandler(numbytes,"SERVER ACK: sendto");
 			}
 			printf("SERVER: sent %d bytes\n", numbytes);
 
-			//WAITING FOR ACKNOWLEDGEMENT - DATA PACKET
-			//maxTries func
-			maxTries(sockfd, buf, their_addr, addr_len, numbytes, p, t_msg);
-
-			printf("SERVER: got packet from %s\n", inet_ntop(their_addr.ss_family, get_in_addr((struct sockaddr *)&their_addr), s, sizeof s));
+			/* Waiting for acknowledgement - Data packet */
+			/* Checks the maxTries func */
+			logger("Server: Maxtries",'d',__LINE__);
+			numbytes=maxTries(sockfd, buf, their_addr, addr_len, res, t_msg);
+			if(numbytes==-1)
+			{
+				logger("Server: failure",'w',__LINE__);
+				return EXIT_FAILURE;
+			}
+			logger("Server: Got packet from client",'i',__LINE__);
+			printf("SERVER: got packet from %s\n", inet_ntop(their_addr.ss_family, getAddress((struct sockaddr *)&their_addr), dst, sizeof dst));
 			printf("SERVER: packet is %d bytes long\n", numbytes);
 			buf[numbytes] = '\0';
 			printf("SERVER: packet contains \"%s\"\n", buf);				
 			++block;
 			if(block>MAX_PACKETS)
 				block = 1;
+		free(t_msg);
 		}
 		fclose(fp);
+		return EXIT_SUCCESS;
 }
 
 /*******************************************************************
  **  FUNCTION NAME	: writeRequest
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Server gets a write request with the 
+ 			  filename
  **
  **  PARAMETERS		: 
  **
  **  RETURN 		: 
  **
  ******************************************************************/
-int writeRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len, int numbytes, char s[])
+int writeRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len)
 {
-	char *message = make_ack("00");
-	char last_recv_message[MAXBUFLEN];strcpy(last_recv_message, buf);
-	char last_sent_ack[10];strcpy(last_sent_ack, message);
+	char *message = makeACK("00");
+	int numbytes;
+	int flag=1;
+	char *t_msg;
+	FILE *fp;
+	char dst[INET6_ADDRSTRLEN];
+	char filename[MAX_FILENAME_LEN];
+	char last_recv_message[MAXBUFLEN];
+	strcpy(last_recv_message, buf);
+	char last_sent_ack[10];
+	strcpy(last_sent_ack, message);
 	if((numbytes = sendto(sockfd, message, strlen(message), 0, (struct sockaddr *)&their_addr, addr_len)) == -1)
 	{
-		perror("SERVER ACK: sendto");
-		exit(1);
+		logger("Server: ACK sendto",'f',__LINE__);
+		errorHandler(numbytes,"SERVER ACK: sendto");
 	}
-
-	printf("SERVER: sent %d bytes\n", numbytes);
-	char filename[MAX_FILENAME_LEN];
 	strcpy(filename, buf+2);
 	strcat(filename, "_server");
-
-	if(access(filename, F_OK) != -1)
-	{ //SENDING ERROR PACKET - DUPLICATE FILE
-		fprintf(stderr,"SERVER: file %s already exists, sending error packet\n", filename);
-		char *e_msg = make_err("06", "ERROR_FILE_ALREADY_EXISTS");
-		sendto(sockfd, e_msg, strlen(e_msg), 0, (struct sockaddr *)&their_addr, addr_len);
-		exit(1);
-	}
-
-	FILE *fp = fopen(filename, "wb");
-	if(fp == NULL || access(filename, W_OK) == -1)
-	{ //SENDING ERROR PACKET - ACCESS DENIED
-		fprintf(stderr,"SERVER: file %s access denied, sending error packet\n", filename);
-		char *e_msg = make_err("05", "ERROR_ACCESS_DENIED");
-		sendto(sockfd, e_msg, strlen(e_msg), 0, (struct sockaddr *)&their_addr, addr_len);
-		exit(1);
-	}
-
 	int c_written;
-	do{
-		//RECEIVING FILE - PACKET DATA
+	do
+	{
+		/* Receiving packet data */
+		logger("Server: Receiving packet data",'d',__LINE__);
 		if ((numbytes = recvfrom(sockfd, buf, MAXBUFLEN-1 , 0, (struct sockaddr *)&their_addr, &addr_len)) == -1) 
 		{
-			perror("SERVER: recvfrom");
-			exit(1);
+			logger("Server: recvfrom",'f',__LINE__);
+			errorHandler(numbytes,"SERVER: recvfrom");
 		}
-		printf("SERVER: got packet from %s\n", inet_ntop(their_addr.ss_family, get_in_addr((struct sockaddr *)&their_addr), s, sizeof s));
+		logger("Server got packet from",'i',__LINE__);
+		printf("SERVER: got packet from %s\n", inet_ntop(their_addr.ss_family, getAddress((struct sockaddr *)&their_addr), dst, sizeof dst));
 		printf("SERVER: packet is %d bytes long\n", numbytes);
 		buf[numbytes] = '\0';
 		printf("SERVER: packet contains \"%s\"\n", buf);
-
-		//SENDING LAST ACK AGAIN - AS IT HAS NOT REACHED
+		
+		if(flag==1)
+		{
+			if(buf[0]=='0' && buf[1]=='5')
+			{
+				fprintf(stderr, "SERVER: got error packet: %s\n", buf);
+				logger("Server: got error packet",'w',__LINE__);
+				free(message);
+				return EXIT_FAILURE;
+			}
+			if(access(filename, F_OK) != -1)
+			{ 
+				/* Sending error packet duplicate file */
+				logger("Server: Sending error packet",'d',__LINE__);
+				fprintf(stderr,"SERVER: file %s already exists, sending error packet\n", filename);
+				char *e_msg = makeERR("06", "ERROR_FILE_ALREADY_EXISTS");
+				sendto(sockfd, e_msg, strlen(e_msg), 0, (struct sockaddr *)&their_addr, addr_len);
+				free(e_msg);
+				free(message);
+				return EXIT_FAILURE;
+			}
+			fp = fopen(filename, "wb");
+			if(fp == NULL || access(filename, W_OK) == -1)
+			{ 
+				/* Sending error packet access denied */
+				logger("Server: Access denied",'w',__LINE__);
+				fprintf(stderr,"SERVER: file %s access denied, sending error packet\n", filename);
+				char *e_msg = makeERR("05", "ERROR_ACCESS_DENIED");
+				logger("Server: sendto",'d',__LINE__);
+				sendto(sockfd, e_msg, strlen(e_msg), 0, (struct sockaddr *)&their_addr, addr_len);
+				free(e_msg);
+				free(message);
+				return EXIT_FAILURE;
+			}
+			flag=0;
+		}
+		/* Sending last acknowledgement again as it has not reached */
 		if(strcmp(buf, last_recv_message) == 0)
 		{
+			logger("Server: last ack sending",'i',__LINE__);
 			sendto(sockfd, last_sent_ack, strlen(last_sent_ack), 0, (struct sockaddr *)&their_addr, addr_len);
 			continue;
 		}
-
-		//WRITING FILE
+		/* Writing file */
 		c_written = strlen(buf+4);
 		fwrite(buf+4, sizeof(char), c_written, fp);
 		strcpy(last_recv_message, buf);
 
-		//SENDING ACKNOWLEDGEMENT - PACKET DATA
+		/* Sending acknowledgement packet data */
 		char block[3];
 		strncpy(block, buf+2, 2);
 		block[2] = '\0';
-		char *t_msg = make_ack(block);
+		t_msg = makeACK(block);
 		if((numbytes = sendto(sockfd, t_msg, strlen(t_msg), 0, (struct sockaddr *)&their_addr, addr_len)) == -1)
 		{
-			perror("SERVER ACK: sendto");
-			exit(1);
+			logger("Server: ack sendto",'f',__LINE__);
+			errorHandler(numbytes,"SERVER ACK: sendto");
 		}
+		logger("Server sent to client",'i',__LINE__);
 		printf("SERVER: sent %d bytes\n", numbytes);
 		strcpy(last_sent_ack, t_msg);
+		free(t_msg);
 	}
-       	while(c_written == MAX_READ_LEN);
+	while(c_written == MAX_READ_LEN);
+	logger("Server: New file made",'i',__LINE__);
 	printf("NEW FILE: %s SUCCESSFULLY MADE\n", filename);
+	free(message);
 	fclose(fp);
+	return EXIT_SUCCESS;
 }
+
+/*******************************************************************
+ **  FUNCTION NAME	: logger
+ **
+ **  DESCRIPTION	: Used for debug log messages using 
+ 			  4 levels 
+ **
+ **  PARAMETERS		: char* message, char logType
+ **
+ **  RETURN 		: EXIT_SUCCESS
+ **
+ ******************************************************************/
+int logger(char* message, char logType, int lineNo)
+{
+    /* info - i
+     fatal - f
+     warning - w
+     debug - d
+    */
+    char LOG_PATH[]="../logs";
+    time_t ltime = time(NULL);
+    struct tm res;
+    char TIMESTAMP[32];
+    localtime_r(&ltime,&res);
+    asctime_r(&res,TIMESTAMP);
+    FILE *logfile;
+    char logFileName[100];
+    switch(logType)
+    {
+        case 'i':
+            sprintf(logFileName,"%s/info.log",LOG_PATH);
+            logfile = fopen(logFileName,"a+");
+            fprintf(logfile,"~~%s[%s : %d]\t%s\n----------\n",TIMESTAMP,__FILE__, __LINE__, message);
+            fclose(logfile);
+            break;
+        case 'f':
+            sprintf(logFileName,"%s/fatal.log",LOG_PATH);
+            logfile = fopen(logFileName,"a+");
+            fprintf(logfile,"~~%s[%s : %d]\t%s\n----------\n",TIMESTAMP,__FILE__, __LINE__, message);
+            fclose(logfile);
+            break;
+        case 'w':
+            sprintf(logFileName,"%s/warnings.log",LOG_PATH);
+            logfile = fopen(logFileName,"a+");
+            fprintf(logfile,"~~%s[%s : %d]\t%s\n----------\n",TIMESTAMP,__FILE__, __LINE__, message);
+            fclose(logfile);
+            break;
+        case 'd':
+            sprintf(logFileName,"%s/debug.log",LOG_PATH);
+            logfile = fopen(logFileName,"a+");
+            fprintf(logfile,"~~%s[%s : %d]\t%s\n----------\n",TIMESTAMP,__FILE__, __LINE__, message);
+            fclose(logfile);
+            break;
+        
+    }
+    return EXIT_SUCCESS;
+}
+
+/*******************************************************************
+ **  FUNCTION NAME	: errorHandler
+ **
+ **  DESCRIPTION	: Handles the error
+ **
+ **  PARAMETERS		: int ret, const char *mesg
+ **
+ **  RETURN 		: void
+ **
+ ******************************************************************/
+void errorHandler(int ret, const char *mesg)
+{
+	if(ret == -1)
+	{
+		perror(mesg);
+		exit(EXIT_FAILURE);
+	}
+}
+
 
 

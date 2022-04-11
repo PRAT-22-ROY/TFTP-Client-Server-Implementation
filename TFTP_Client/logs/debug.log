@@ -1,0 +1,400 @@
+
+~~Mon Apr 11 08:38:28 2022
+[./../src/client.c : 419]	Client: Max tries function call
+----------
+
+~~Mon Apr 11 08:38:28 2022
+[./../src/client.c : 345]	Max tries function
+----------
+
+~~Mon Apr 11 08:38:28 2022
+[./../src/client.c : 442]	Calculating the size of file
+----------
+
+~~Mon Apr 11 08:38:28 2022
+[./../src/client.c : 456]	Reading file data packet
+----------
+
+~~Mon Apr 11 08:38:28 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 08:38:28 2022
+[./../src/client.c : 493]	Client: Timeout check
+----------
+
+~~Mon Apr 11 10:46:47 2022
+[./../src/client.c : 419]	Client: Max tries function call
+----------
+
+~~Mon Apr 11 10:46:47 2022
+[./../src/client.c : 344]	Max tries function
+----------
+
+~~Mon Apr 11 10:46:47 2022
+[./../src/client.c : 442]	Calculating the size of file
+----------
+
+~~Mon Apr 11 10:46:47 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 10:46:47 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 10:47:16 2022
+[./../src/client.c : 255]	Receiving actual file
+----------
+
+~~Mon Apr 11 10:47:53 2022
+[./../src/client.c : 255]	Receiving actual file
+----------
+
+~~Mon Apr 11 10:47:53 2022
+[./../src/client.c : 307]	Client: Sending ack packet data
+----------
+
+~~Mon Apr 11 10:49:01 2022
+[./../src/client.c : 255]	Receiving actual file
+----------
+
+~~Mon Apr 11 10:49:29 2022
+[./../src/client.c : 419]	Client: Max tries function call
+----------
+
+~~Mon Apr 11 10:49:29 2022
+[./../src/client.c : 344]	Max tries function
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 419]	Client: Max tries function call
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 344]	Max tries function
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 442]	Calculating the size of file
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 419]	Client: Max tries function call
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 344]	Max tries function
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 442]	Calculating the size of file
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 255]	Receiving actual file
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 307]	Client: Sending ack packet data
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 307]	Client: Sending ack packet data
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 307]	Client: Sending ack packet data
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 307]	Client: Sending ack packet data
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 307]	Client: Sending ack packet data
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 419]	Client: Max tries function call
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 344]	Max tries function
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 442]	Calculating the size of file
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 255]	Receiving actual file
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 307]	Client: Sending ack packet data
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 307]	Client: Sending ack packet data
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 307]	Client: Sending ack packet data
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 307]	Client: Sending ack packet data
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 307]	Client: Sending ack packet data
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 419]	Client: Max tries function call
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 344]	Max tries function
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 442]	Calculating the size of file
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 255]	Receiving actual file
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 307]	Client: Sending ack packet data
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 307]	Client: Sending ack packet data
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 307]	Client: Sending ack packet data
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 307]	Client: Sending ack packet data
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 307]	Client: Sending ack packet data
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 419]	Client: Max tries function call
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 344]	Max tries function
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 442]	Calculating the size of file
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 471]	Sending file data packet
+----------
+
+~~Mon Apr 11 14:31:04 2022
+[./../src/client.c : 492]	Client: Timeout check
+----------
