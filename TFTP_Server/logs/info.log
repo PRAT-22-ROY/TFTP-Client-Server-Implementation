@@ -1,0 +1,36 @@
+~~Mon Apr 11 14:31:03 2022
+[./../src/server.c : 542]	Server got the packet
+----------
+~~Mon Apr 11 14:31:03 2022
+[./../src/server.c : 542]	Server got packet from
+----------
+~~Mon Apr 11 14:31:03 2022
+[./../src/server.c : 542]	Server sent to client
+----------
+~~Mon Apr 11 14:31:03 2022
+[./../src/server.c : 542]	Server got packet from
+----------
+~~Mon Apr 11 14:31:03 2022
+[./../src/server.c : 542]	Server sent to client
+----------
+~~Mon Apr 11 14:31:03 2022
+[./../src/server.c : 542]	Server got packet from
+----------
+~~Mon Apr 11 14:31:03 2022
+[./../src/server.c : 542]	Server sent to client
+----------
+~~Mon Apr 11 14:31:03 2022
+[./../src/server.c : 542]	Server got packet from
+----------
+~~Mon Apr 11 14:31:03 2022
+[./../src/server.c : 542]	Server sent to client
+----------
+~~Mon Apr 11 14:31:03 2022
+[./../src/server.c : 542]	Server got packet from
+----------
+~~Mon Apr 11 14:31:04 2022
+[./../src/server.c : 542]	Server sent to client
+----------
+~~Mon Apr 11 14:31:04 2022
+[./../src/server.c : 542]	Server: New file made
+----------

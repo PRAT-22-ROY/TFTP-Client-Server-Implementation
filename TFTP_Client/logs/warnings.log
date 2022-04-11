@@ -1,0 +1,20 @@
+
+~~Mon Apr 11 10:47:16 2022
+[./../src/client.c : 276]	Client: got error packet
+----------
+
+~~Mon Apr 11 10:49:34 2022
+[./../src/client.c : 208]	Client: Timeout
+----------
+
+~~Mon Apr 11 10:49:39 2022
+[./../src/client.c : 208]	Client: Timeout
+----------
+
+~~Mon Apr 11 10:49:44 2022
+[./../src/client.c : 208]	Client: Timeout
+----------
+
+~~Mon Apr 11 10:49:44 2022
+[./../src/client.c : 353]	Client: Max number of tries reached
+----------

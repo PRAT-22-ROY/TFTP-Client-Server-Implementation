@@ -1,0 +1,43 @@
+==3953== Memcheck, a memory error detector
+==3953== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==3953== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==3953== Command: ./main GET 127.0.0.1 serverFile
+==3953== 
+CLIENT: sent 12 bytes to 127.0.0.1
+CLIENT: got packet from 127.0.0.1
+CLIENT: packet is 516 bytes long
+CLIENT: packet contains "0301Microsoft Windows, commonly referred to as Windows, is a group of several proprietary graphical operating system families, all of which are developed and marketed by Microsoft. Each family caters to a certain sector of the computing industry. Active Microsoft Windows families include Windows NT and Windows IoT; these may encompass subfamilies, (e.g. Windows Server or Windows Embedded Compact) (Windows CE). Defunct Microsoft Windows families include Windows 9x, Windows Mobile and Windows Phone.
+
+Microsoft in"
+CLIENT: sent 4 bytes
+CLIENT: got packet from 127.0.0.1
+CLIENT: packet is 516 bytes long
+CLIENT: packet contains "0302troduced an operating environment named Windows on November 20, 1985, as a graphical operating system shell for MS-DOS in response to the growing interest in graphical user interfaces (GUIs).[5] Microsoft Windows came to dominate the world's personal computer (PC) market with over 90% market share, overtaking Mac OS, which had been introduced in 1984.
+
+Apple came to see Windows as an unfair encroachment on their innovation in GUI development as implemented on products such as the Lisa and Macintosh (eventua"
+CLIENT: sent 4 bytes
+CLIENT: got packet from 127.0.0.1
+CLIENT: packet is 516 bytes long
+CLIENT: packet contains "0303lly settled in court in Microsoft's favor in 1993). On PCs, Windows is still the most popular operating system in all countries.[6][7] However, in 2014, Microsoft admitted losing the majority of the overall operating system market to Android,[8] because of the massive growth in sales of Android smartphones. In 2014, the number of Windows devices sold was less than 25% that of Android devices sold. This comparison, however, may not be fully relevant, as the two operating systems traditionally target differen"
+CLIENT: sent 4 bytes
+CLIENT: got packet from 127.0.0.1
+CLIENT: packet is 516 bytes long
+CLIENT: packet contains "0304t platforms. Still, numbers for server use of Windows (that are comparable to competitors) show one third market share, similar to that for end user use.
+
+As of October 2021, the most recent version of Windows for PCs and tablets is Windows 11, version 21H2. The most recent version for embedded devices is Windows 10, version 21H1. The most recent version for server computers is Windows Server 2022, version 21H2.[9] A specialized version of Windows also runs on the Xbox One and Xbox Series X/S video game con"
+CLIENT: sent 4 bytes
+CLIENT: got packet from 127.0.0.1
+CLIENT: packet is 15 bytes long
+CLIENT: packet contains "0305soles.[10]
+"
+CLIENT: sent 4 bytes
+NEW FILE: serverFile_client SUCCESSFULLY MADE
+==3953== 
+==3953== HEAP SUMMARY:
+==3953==     in use at exit: 0 bytes in 0 blocks
+==3953==   total heap usage: 72 allocs, 72 frees, 43,360 bytes allocated
+==3953== 
+==3953== All heap blocks were freed -- no leaks are possible
+==3953== 
+==3953== For lists of detected and suppressed errors, rerun with: -s
+==3953== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

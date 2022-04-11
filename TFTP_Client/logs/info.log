@@ -1,0 +1,608 @@
+
+~~Mon Apr 11 08:38:28 2022
+[./../src/client.c : 413]	Client: send data to server
+----------
+
+~~Mon Apr 11 08:38:28 2022
+[./../src/client.c : 422]	Client: got packet from server
+----------
+
+~~Mon Apr 11 08:38:28 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 08:38:28 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 10:46:47 2022
+[./../src/client.c : 92]	Client: writing file to server
+----------
+
+~~Mon Apr 11 10:46:47 2022
+[./../src/client.c : 413]	Client: send data to server
+----------
+
+~~Mon Apr 11 10:46:47 2022
+[./../src/client.c : 422]	Client: got packet from server
+----------
+
+~~Mon Apr 11 10:46:47 2022
+[./../src/client.c : 453]	Reading file data packet
+----------
+
+~~Mon Apr 11 10:46:47 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 10:46:47 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 10:47:16 2022
+[./../src/client.c : 86]	Client: requesting file from server
+----------
+
+~~Mon Apr 11 10:47:16 2022
+[./../src/client.c : 252]	Client sent to server
+----------
+
+~~Mon Apr 11 10:47:16 2022
+[./../src/client.c : 260]	Receiving file packet data
+----------
+
+~~Mon Apr 11 10:47:16 2022
+[./../src/client.c : 267]	Client: got packet from
+----------
+
+~~Mon Apr 11 10:47:53 2022
+[./../src/client.c : 86]	Client: requesting file from server
+----------
+
+~~Mon Apr 11 10:47:53 2022
+[./../src/client.c : 252]	Client sent to server
+----------
+
+~~Mon Apr 11 10:47:53 2022
+[./../src/client.c : 260]	Receiving file packet data
+----------
+
+~~Mon Apr 11 10:47:53 2022
+[./../src/client.c : 267]	Client: got packet from
+----------
+
+~~Mon Apr 11 10:47:53 2022
+[./../src/client.c : 318]	Client sent data
+----------
+
+~~Mon Apr 11 10:47:53 2022
+[./../src/client.c : 326]	New file successfully made
+----------
+
+~~Mon Apr 11 10:49:01 2022
+[./../src/client.c : 86]	Client: requesting file from server
+----------
+
+~~Mon Apr 11 10:49:01 2022
+[./../src/client.c : 252]	Client sent to server
+----------
+
+~~Mon Apr 11 10:49:01 2022
+[./../src/client.c : 260]	Receiving file packet data
+----------
+
+~~Mon Apr 11 10:49:29 2022
+[./../src/client.c : 92]	Client: writing file to server
+----------
+
+~~Mon Apr 11 10:49:29 2022
+[./../src/client.c : 413]	Client: send data to server
+----------
+
+~~Mon Apr 11 10:49:34 2022
+[./../src/client.c : 375]	Client sent bytes again
+----------
+
+~~Mon Apr 11 10:49:39 2022
+[./../src/client.c : 375]	Client sent bytes again
+----------
+
+~~Mon Apr 11 10:49:44 2022
+[./../src/client.c : 375]	Client sent bytes again
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 92]	Client: writing file to server
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 413]	Client: send data to server
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 422]	Client: got packet from server
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 453]	Reading file data packet
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 10:56:25 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 10:57:27 2022
+[./../src/client.c : 92]	Client: writing file to server
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 413]	Client: send data to server
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 422]	Client: got packet from server
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 453]	Reading file data packet
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 10:57:28 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 86]	Client: requesting file from server
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 252]	Client sent to server
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 260]	Receiving file packet data
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 267]	Client: got packet from
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 318]	Client sent data
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 260]	Receiving file packet data
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 267]	Client: got packet from
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 318]	Client sent data
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 260]	Receiving file packet data
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 267]	Client: got packet from
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 318]	Client sent data
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 260]	Receiving file packet data
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 267]	Client: got packet from
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 318]	Client sent data
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 260]	Receiving file packet data
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 267]	Client: got packet from
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 318]	Client sent data
+----------
+
+~~Mon Apr 11 10:58:00 2022
+[./../src/client.c : 326]	New file successfully made
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 92]	Client: writing file to server
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 413]	Client: send data to server
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 422]	Client: got packet from server
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 453]	Reading file data packet
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 11:00:32 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 86]	Client: requesting file from server
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 252]	Client sent to server
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 260]	Receiving file packet data
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 267]	Client: got packet from
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 318]	Client sent data
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 260]	Receiving file packet data
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 267]	Client: got packet from
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 318]	Client sent data
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 260]	Receiving file packet data
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 267]	Client: got packet from
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 318]	Client sent data
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 260]	Receiving file packet data
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 267]	Client: got packet from
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 318]	Client sent data
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 260]	Receiving file packet data
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 267]	Client: got packet from
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 318]	Client sent data
+----------
+
+~~Mon Apr 11 11:01:26 2022
+[./../src/client.c : 326]	New file successfully made
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 92]	Client: writing file to server
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 413]	Client: send data to server
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 422]	Client: got packet from server
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 453]	Reading file data packet
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 11:05:02 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 86]	Client: requesting file from server
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 252]	Client sent to server
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 260]	Receiving file packet data
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 267]	Client: got packet from
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 318]	Client sent data
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 260]	Receiving file packet data
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 267]	Client: got packet from
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 318]	Client sent data
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 260]	Receiving file packet data
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 267]	Client: got packet from
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 318]	Client sent data
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 260]	Receiving file packet data
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 267]	Client: got packet from
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 318]	Client sent data
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 260]	Receiving file packet data
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 267]	Client: got packet from
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 318]	Client sent data
+----------
+
+~~Mon Apr 11 11:05:26 2022
+[./../src/client.c : 326]	New file successfully made
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 92]	Client: writing file to server
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 413]	Client: send data to server
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 422]	Client: got packet from server
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 453]	Reading file data packet
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 524]	Client got packet
+----------
+
+~~Mon Apr 11 14:31:03 2022
+[./../src/client.c : 480]	Client: sent bytes to server
+----------
+
+~~Mon Apr 11 14:31:04 2022
+[./../src/client.c : 524]	Client got packet
+----------

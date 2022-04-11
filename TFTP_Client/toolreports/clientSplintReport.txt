@@ -1,0 +1,268 @@
+Splint 3.1.2 --- 20 Feb 2018
+
+< Location unknown >: Field name reused: 
+  Code cannot be parsed.  For help on parse errors, see splint -help
+  parseerrors. (Use -syntax to inhibit warning)
+< Location unknown >: Previous use of 
+client.c: (in function numberToString)
+client.c:41:13: Incompatible types for + (int, char): num + '0'
+  A character constant is used as an int. Use +charintliteral to allow
+  character constants to be used as ints.  (This is safe since the actual type
+  of a char constant is int.)
+client.c:46:18: Incompatible types for + (int, char): (num % 10) + '0'
+client.c:47:18: Incompatible types for + (int, char): (num / 10) + '0'
+client.c: (in function makeRRQ)
+client.c:69:9: Possibly null storage packet passed as non-null param:
+                  memset (packet, ...)
+  A possibly null pointer is passed as a parameter corresponding to a formal
+  parameter with no /*@null@*/ annotation.  If NULL may be used for this
+  parameter, add a /*@null@*/ annotation to the function parameter declaration.
+  (Use -nullpass to inhibit warning)
+   client.c:67:11: Storage packet may become null
+client.c: (in function makeWRQ)
+client.c:90:9: Possibly null storage packet passed as non-null param:
+                  memset (packet, ...)
+   client.c:88:11: Storage packet may become null
+client.c: (in function makeDataPacket)
+client.c:110:17: Passed storage temp not completely defined (*temp is
+                    undefined): numberToString (temp, ...)
+  Storage derivable from a parameter, return value or global is not defined.
+  Use /*@out@*/ to denote passed or returned storage which need not be defined.
+  (Use -compdef to inhibit warning)
+client.c:113:9: Possibly null storage packet passed as non-null param:
+                   memset (packet, ...)
+   client.c:111:11: Storage packet may become null
+client.c: (in function makeACK)
+client.c:134:9: Possibly null storage packet passed as non-null param:
+                   strcpy (packet, ...)
+   client.c:133:11: Storage packet may become null
+client.c: (in function makeERR)
+client.c:154:9: Possibly null storage packet passed as non-null param:
+                   memset (packet, ...)
+   client.c:152:11: Storage packet may become null
+client.c: (in function getAddress)
+client.c:174:10: Immediate address &sa->sin_addr returned as implicitly only:
+                    &(((struct sockaddr_in *)sa)->sin_addr)
+  An immediate address (result of & operator) is transferred inconsistently.
+  (Use -immediatetrans to inhibit warning)
+client.c:176:9: Immediate address &sa->sin6_addr returned as implicitly only:
+                   &(((struct sockaddr_in6 *)sa)->sin6_addr)
+client.c: (in function checkTimeout)
+client.c:196:112: Operands of < have incompatible types (unsigned int,
+    arbitrary unsigned integral type): __i < sizeof(fd_set) / sizeof(__fd_mask)
+  To ignore type qualifiers in type comparisons use +ignorequals.
+client.c:197:103: Right operand of << may be negative (int):
+                     1UL << ((sockfd) % (8 * (int)sizeof(__fd_mask)))
+  The right operand to a shift operator may be negative (behavior undefined).
+  (Use -shiftnegative to inhibit warning)
+client.c:197:11: Value fds.__fds_bits[] used before definition
+  An rvalue is used that may not be initialized to a value on some execution
+  path. (Use -usedef to inhibit warning)
+client.c:204:31: Null storage passed as non-null param: select (..., NULL, ...)
+client.c:204:37: Null storage passed as non-null param: select (..., NULL, ...)
+client.c:208:3: Return value (type int) ignored: logger("Client: ...
+  Result returned by function call is not used. If this is intended, can cast
+  result to (void) to eliminate message. (Use -retvalint to inhibit warning)
+client.c:214:13: Only storage fds.__fds_bits[] (type __fd_mask) derived from
+    variable declared in this scope is not released (memory leak)
+  A storage leak due to incomplete deallocation of a structure or deep pointer
+  is suspected. Unshared storage that is reachable from a reference that is
+  being deallocated has not yet been deallocated. Splint assumes when an object
+  is passed as an out only void pointer that the outer object will be
+  deallocated, but the inner objects will not. (Use -compdestroy to inhibit
+  warning)
+client.c:216:9: Return value type ssize_t does not match declared type int:
+    recvfrom(sockfd, buf, 550 - 1, 0, (struct sockaddr *)their_addr, &addr_len)
+  To allow arbitrary integral types to match any integral type, use
+  +matchanyintegral.
+client.c:216:85: Only storage fds.__fds_bits[] (type __fd_mask) derived from
+    variable declared in this scope is not released (memory leak)
+client.c: (in function readFile)
+client.c:244:2: Assignment of size_t to socklen_t:
+                   addr_len = sizeof(their_addr)
+  Types are incompatible. (Use -type to inhibit warning)
+client.c:246:6: Assignment of ssize_t to int:
+                   numbytes = sendto(sockfd, message, strlen(message), 0,
+                   res->ai_addr, res->ai_addrlen)
+client.c:248:3: Return value (type int) ignored: logger("Client: ...
+client.c:252:2: Return value (type int) ignored: logger("Client s...
+client.c:255:2: Return value (type int) ignored: logger("Receivin...
+client.c:260:3: Return value (type int) ignored: logger("Receivin...
+client.c:261:36: Passed storage buf not completely defined (*buf is undefined):
+                    recvfrom (..., buf, ...)
+client.c:261:8: Assignment of ssize_t to int:
+                   numbytes = recvfrom(sockfd, buf, 550 - 1, 0, (struct
+                   sockaddr *)&their_addr, &addr_len)
+client.c:263:4: Return value (type int) ignored: logger("Client: ...
+client.c:266:52: Function inet_ntop expects arg 1 to be int gets sa_family_t:
+                    their_addr.ss_family
+client.c:266:74: New fresh storage (type void *) passed as implicitly temp (not
+                    released): getAddress((struct sockaddr *)&their_addr)
+  A memory leak has been detected. Storage allocated locally is not released
+  before the last reference to it is lost. (Use -mustfreefresh to inhibit
+  warning)
+client.c:266:118: Passed storage dst not completely defined (*dst is
+                     undefined): inet_ntop (..., dst, ...)
+client.c:266:42: New fresh storage (type char *) passed as implicitly temp (not
+    released): inet_ntop(their_addr.ss_family, getAddress((struct sockaddr
+    *)&their_addr), dst, 46)
+client.c:267:3: Return value (type int) ignored: logger("Client: ...
+client.c:276:4: Return value (type int) ignored: logger("Client: ...
+client.c:278:9: Argument to exit has implementation defined behavior: 1
+  The argument to exit should be 0, EXIT_SUCCESS or EXIT_FAILURE (Use -exitarg
+  to inhibit warning)
+client.c:288:5: Return value (type int) ignored: logger("Client: ...
+client.c:290:10: Argument to exit has implementation defined behavior: 1
+client.c:297:4: Return value (type int) ignored: logger("Client: ...
+client.c:298:4: Return value (type ssize_t) ignored: sendto(sockfd, l...
+  Result returned by function call is not used. If this is intended, can cast
+  result to (void) to eliminate message. (Use -retvalother to inhibit warning)
+client.c:302:3: Assignment of size_t to int: c_written = strlen(buf + 4)
+client.c:303:31: Function fwrite expects arg 3 to be size_t gets int: c_written
+client.c:303:42: Variable fp used before definition
+client.c:303:3: Return value (type size_t) ignored: fwrite(buf + 4, ...
+client.c:307:3: Return value (type int) ignored: logger("Client: ...
+client.c:309:11: Possibly null storage block passed as non-null param:
+                    strncpy (block, ...)
+   client.c:308:9: Storage block may become null
+client.c:312:7: Assignment of ssize_t to int:
+                   numbytes = sendto(sockfd, t_msg, strlen(t_msg), 0,
+                   res->ai_addr, res->ai_addrlen)
+client.c:314:4: Return value (type int) ignored: logger("Client a...
+client.c:318:3: Return value (type int) ignored: logger("Client s...
+client.c:325:45: Passed storage filename not completely defined (*filename is
+                    undefined): printf (..., filename, ...)
+client.c:326:2: Return value (type int) ignored: logger("New file...
+client.c:328:2: Return value (type int) ignored: fclose(fp)
+client.c: (in function maxTries)
+client.c:344:2: Return value (type int) ignored: logger("Max trie...
+client.c:353:4: Return value (type int) ignored: logger("Client: ...
+client.c:354:9: Argument to exit has implementation defined behavior: 1
+client.c:361:4: Return value (type int) ignored: logger("Client: ...
+client.c:369:8: Assignment of ssize_t to int:
+    temp_bytes = sendto(sockfd, last_message, strlen(last_message), 0,
+    res->ai_addr, res->ai_addrlen)
+client.c:371:5: Return value (type int) ignored: logger("Client: ...
+client.c:375:4: Return value (type int) ignored: logger("Client s...
+client.c: (in function writeFile)
+client.c:407:6: Assignment of ssize_t to int:
+                   numbytes = sendto(sockfd, message, strlen(message), 0,
+                   res->ai_addr, res->ai_addrlen)
+client.c:409:3: Return value (type int) ignored: logger("Client: ...
+client.c:413:2: Return value (type int) ignored: logger("Client: ...
+client.c:418:2: Assignment of size_t to socklen_t:
+                   addr_len = sizeof(their_addr)
+client.c:419:2: Return value (type int) ignored: logger("Client: ...
+client.c:420:18: Passed storage buf not completely defined (*buf is undefined):
+                    maxTries (..., buf, ...)
+client.c:420:2: Return value (type int) ignored: maxTries(sockfd,...
+client.c:421:51: Function inet_ntop expects arg 1 to be int gets sa_family_t:
+                    their_addr.ss_family
+client.c:421:73: New fresh storage (type void *) passed as implicitly temp (not
+                    released): getAddress((struct sockaddr *)&their_addr)
+client.c:421:117: Passed storage dst not completely defined (*dst is
+                     undefined): inet_ntop (..., dst, ...)
+client.c:421:41: New fresh storage (type char *) passed as implicitly temp (not
+    released): inet_ntop(their_addr.ss_family, getAddress((struct sockaddr
+    *)&their_addr), dst, 46)
+client.c:422:2: Return value (type int) ignored: logger("Client: ...
+client.c:434:4: Return value (type ssize_t) ignored: sendto(sockfd, e...
+client.c:437:4: Return value (type int) ignored: logger("Client: ...
+client.c:439:9: Argument to exit has implementation defined behavior: 1
+client.c:442:3: Return value (type int) ignored: logger("Calculat...
+client.c:444:3: Return value (type int) ignored: fseek(fp, 0, SEE...
+client.c:445:15: Variable total initialized to type long int, expects int:
+                    ftell(fp)
+client.c:446:3: Return value (type int) ignored: fseek(fp, 0, SEE...
+client.c:453:3: Return value (type int) ignored: logger("Reading ...
+client.c:460:5: Return value (type size_t) ignored: fread(temp, 512,...
+client.c:466:17: Function fread expects arg 2 to be size_t gets int: remaining
+client.c:466:5: Return value (type size_t) ignored: fread(temp, rema...
+client.c:471:4: Return value (type int) ignored: logger("Sending ...
+client.c:473:8: Assignment of ssize_t to int:
+                   numbytes = sendto(sockfd, t_msg, strlen(t_msg), 0,
+                   res->ai_addr, res->ai_addrlen)
+client.c:475:5: Return value (type int) ignored: logger("Client: ...
+client.c:480:4: Return value (type int) ignored: logger("Client: ...
+client.c:488:6: Return value (type int) ignored: logger("Client: ...
+client.c:490:11: Argument to exit has implementation defined behavior: 1
+client.c:492:5: Return value (type int) ignored: logger("Client: ...
+client.c:497:6: Return value (type int) ignored: logger("Client: ...
+client.c:499:11: Argument to exit has implementation defined behavior: 1
+client.c:504:6: Return value (type int) ignored: logger("Client: ...
+client.c:507:10: Assignment of ssize_t to int:
+    temp_bytes = sendto(sockfd, last_message, strlen(last_message), 0,
+    res->ai_addr, res->ai_addrlen)
+client.c:509:7: Return value (type int) ignored: logger("Client A...
+client.c:511:12: Argument to exit has implementation defined behavior: 1
+client.c:514:6: Return value (type int) ignored: logger("CLient: ...
+client.c:523:53: Function inet_ntop expects arg 1 to be int gets sa_family_t:
+                    their_addr.ss_family
+client.c:523:75: New fresh storage (type void *) passed as implicitly temp (not
+                    released): getAddress((struct sockaddr *)&their_addr)
+client.c:523:43: New fresh storage (type char *) passed as implicitly temp (not
+    released): inet_ntop(their_addr.ss_family, getAddress((struct sockaddr
+    *)&their_addr), dst, 46)
+client.c:524:4: Return value (type int) ignored: logger("Client g...
+client.c:531:5: Return value (type int) ignored: logger("Client: ...
+client.c:537:5: Return value (type int) ignored: fclose(fp)
+client.c:538:10: Argument to exit has implementation defined behavior: 1
+client.c:544:3: Variable last_message is released in while body, but live if
+                   loop is not taken.
+  The state of a variable is different depending on which branch is taken. This
+  means no annotation can sensibly be applied to the storage. (Use -branchstate
+  to inhibit warning)
+   client.c:544:3: in while body:
+   client.c:543:9: Storage last_message released
+   client.c:544:3: if loop is not taken:
+   client.c:414:2: Storage last_message defined
+client.c:544:3: Variable message is dependent if loop is not taken, but
+                   independent in while body.
+   client.c:544:3: if loop is not taken:
+   client.c:414:2: Storage message becomes dependent
+   client.c:544:3: in while body:
+   client.c:481:4: Storage message becomes owned (through alias last_message)
+client.c:546:4: Return value (type int) ignored: fclose(fp)
+client.c:551:3: Return value (type int) ignored: logger("Client: ...
+client.c:553:8: Argument to exit has implementation defined behavior: 1
+client.c: (in function logger)
+client.c:580:5: Unrecognized identifier: localtime_r
+  Identifier used in code has not been declared. (Use -unrecog to inhibit
+  warning)
+client.c:581:5: Unrecognized identifier: asctime_r
+client.c:587:13: Buffer overflow possible with sprintf.  Recommend using
+                    snprintf instead: sprintf
+  Use of function that may lead to buffer overflow. (Use -bufferoverflowhigh to
+  inhibit warning)
+client.c:589:65: Passed storage TIMESTAMP not completely defined (*TIMESTAMP is
+                    undefined): fprintf (..., TIMESTAMP, ...)
+client.c:589:21: Possibly null storage logfile passed as non-null param:
+                    fprintf (logfile, ...)
+   client.c:588:23: Storage logfile may become null
+client.c:590:13: Return value (type int) ignored: fclose(logfile)
+client.c:593:13: Buffer overflow possible with sprintf.  Recommend using
+                    snprintf instead: sprintf
+client.c:595:65: Passed storage TIMESTAMP not completely defined (*TIMESTAMP is
+                    undefined): fprintf (..., TIMESTAMP, ...)
+client.c:595:21: Possibly null storage logfile passed as non-null param:
+                    fprintf (logfile, ...)
+   client.c:594:23: Storage logfile may become null
+client.c:596:13: Return value (type int) ignored: fclose(logfile)
+client.c:599:13: Buffer overflow possible with sprintf.  Recommend using
+                    snprintf instead: sprintf
+client.c:601:65: Passed storage TIMESTAMP not completely defined (*TIMESTAMP is
+                    undefined): fprintf (..., TIMESTAMP, ...)
+client.c:601:21: Possibly null storage logfile passed as non-null param:
+                    fprintf (logfile, ...)
+   client.c:600:23: Storage logfile may become null
+client.c:602:13: Return value (type int) ignored: fclose(logfile)
+client.c:605:13: Buffer overflow possible with sprintf.  Recommend using
+                    snprintf instead: sprintf
+client.c:607:65: Passed storage TIMESTAMP not completely defined (*TIMESTAMP is
+                    undefined): fprintf (..., TIMESTAMP, ...)
+client.c:607:21: Possibly null storage logfile passed as non-null param:
+                    fprintf (logfile, ...)
+   client.c:606:23: Storage logfile may become null
+client.c:608:13: Return value (type int) ignored: fclose(logfile)
+
+Finished checking --- 127 code warnings
