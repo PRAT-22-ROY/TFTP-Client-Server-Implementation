@@ -2,11 +2,11 @@
 
  *     FILENAME           :    testServer.c
  *
- *     DESCRIPTION        :    Sprint-1 : 
+ *     DESCRIPTION        :    Sprint-1  
  
  				
  *
- *     REVISION HISTORY   :   Last revised on (  )
+ *     REVISION HISTORY   :   Last revised on (12/04/2022)
  *
  *     DATE                GROUP MEMBERS              REFERENCE               REASON
  *     --------------------------------------------------------------------------------------------------
@@ -30,9 +30,9 @@
 #include <server_utility.h>
 
 /******************************************************
-**FUNCTION NAME : 
+**FUNCTION NAME : testMakeACK
 **
-**DESCRIPTION : 
+**DESCRIPTION : Function to test makeACK function
 **
 **RETURNS : NA
 **
@@ -46,9 +46,9 @@ void testMakeACK(void)
 }
 
 /******************************************************
-**FUNCTION NAME : 
+**FUNCTION NAME : testMakeData
 **
-**DESCRIPTION : 
+**DESCRIPTION : Function to test makeData function
 **
 **RETURNS : NA
 **
@@ -64,9 +64,9 @@ void testMakeData(void)
 }
 
 /******************************************************
-**FUNCTION NAME : 
+**FUNCTION NAME : testMakeERR
 **
-**DESCRIPTION : 
+**DESCRIPTION : Function to test makeTest function
 **
 **RETURNS : NA
 **

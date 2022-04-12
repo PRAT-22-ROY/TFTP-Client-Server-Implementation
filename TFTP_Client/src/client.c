@@ -8,8 +8,8 @@
  **  
  **  DATE	    NAME	      REFERENCE	                REASON
  **  ------------------------------------------------------------------------------------
- **  04 April 2022                   
- **
+ **  12 April 2022    Sprint_Group_5     TFTP_SRS            Sprint Assessment     
+ **  
  **
  **  Copyright @ 2022 Capgemini Engineering All Rights Reserved
  **
@@ -158,16 +158,16 @@ char* makeERR(char *errcode, char* errmsg)
 	return packet;
 }
 
-/*******************************************************************
+/*****************************************************************************
  **  FUNCTION NAME	: getAddress
  **
- **  DESCRIPTION	:  getAddress
+ **  DESCRIPTION	: it typecasts an unspecific address into IPv4 or IPv6
  **
  **  PARAMETERS		: struct sockaddr *sa 
  **
  **  RETURN 		: void
  **
- ******************************************************************/
+ ******************************************************************************/
  
 void *getAddress(struct sockaddr *sa){
 	if (sa->sa_family == AF_INET) {
@@ -176,16 +176,17 @@ void *getAddress(struct sockaddr *sa){
 	return &(((struct sockaddr_in6*)sa)->sin6_addr);
 }
  
-/*******************************************************************
+/************************************************************************************
  **  FUNCTION NAME	: checkTimeout
  **
  **  DESCRIPTION	: Checks for timeout
  **
- **  PARAMETERS		: 
+ **  PARAMETERS		: int sockfd, char *buf, struct sockaddr_storage *their_addr,
+                          socklen_t addr_len
  **
- **  RETURN 		: 
+ **  RETURN 		: -2 or -1 or number of bytes received
  **
- ******************************************************************/
+ **************************************************************************************/
  int checkTimeout(int sockfd, char *buf, struct sockaddr_storage *their_addr, socklen_t addr_len)
 {
 	fd_set fds;
@@ -216,16 +217,17 @@ void *getAddress(struct sockaddr *sa){
 	return recvfrom(sockfd, buf, MAXBUFLEN-1 , 0, (struct sockaddr *)their_addr, &addr_len);
 }
 
-/*******************************************************************
+/***********************************************************************************
  **  FUNCTION NAME	: maxTries
  **
  **  DESCRIPTION	: Function to write file to server
  **
- **  PARAMETERS		: 
+ **  PARAMETERS		: int sockfd,char *buf,struct sockaddr_storage *their_addr,
+                          socklen_t addr_len,struct addrinfo *res,char *last_message
  **
- **  RETURN 		: 
+ **  RETURN 		: numBytes
  **
- ******************************************************************/
+ ************************************************************************************/
  int maxTries(int sockfd,char *buf,struct sockaddr_storage *their_addr, socklen_t addr_len,struct addrinfo *res,char *last_message)
 {
 	logger("Max tries function",'d',__func__,__LINE__);
@@ -274,16 +276,17 @@ void *getAddress(struct sockaddr *sa){
  }
  
 
-/*******************************************************************
+/*********************************************************************************************
  **  FUNCTION NAME	: readFile
  **
  **  DESCRIPTION	: Function to read file from server
  **
- **  PARAMETERS	: 
+ **  PARAMETERS	        : int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,
+                          char *file,char *server
  **
- **  RETURN 		: 
+ **  RETURN 		: EXIT_SUCCESS
  **
- ******************************************************************/
+ **********************************************************************************************/
  
  int readFile(int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res, char *file,char *server)
 {
@@ -393,18 +396,19 @@ void *getAddress(struct sockaddr *sa){
 }
 
 	
-/*******************************************************************
+/**********************************************************************************************
  **  FUNCTION NAME	: writeFile
  **
  **  DESCRIPTION	: Function to write file to server
  **
- **  PARAMETERS		: 
+ **  PARAMETERS		: int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,
+                          char *file,char *server
  **
- **  RETURN 		: 
+ **  RETURN 		: EXIT_SUCCESS
  **
- ******************************************************************/
+ **********************************************************************************************/
  
- int writeFile(int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,char *file,char *server)
+ int writeFile(int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res, char *file,char *server)
 {
 	char *message = makeWRQ(file);
 	char *last_message;
