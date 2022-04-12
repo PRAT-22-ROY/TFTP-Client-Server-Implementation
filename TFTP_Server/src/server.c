@@ -8,7 +8,7 @@
  **  
  **  DATE	    NAME	      REFERENCE	                REASON
  **  ------------------------------------------------------------------------------------
- **  04 April 2022    
+ **  12 April 2022   Sprint_Group_5      TFTP_SRS          Sprint Assessment
  **
  **
  **  Copyright @ 2022 Capgemini Engineering All Rights Reserved
@@ -196,9 +196,9 @@ void logClose(void)
 /*******************************************************************
  **  FUNCTION NAME	: getAddress
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: to typecast an unspecific address into IPv4 or IPv6
  **
- **  PARAMETERS		: 
+ **  PARAMETERS		: struct sockaddr *sa
  **
  **  RETURN 		: void
  **
@@ -217,9 +217,9 @@ void *getAddress(struct sockaddr *sa)
  **
  **  DESCRIPTION	: Checks for the timeout condition
  **
- **  PARAMETERS		:
+ **  PARAMETERS		: int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len
  **
- **  RETURN 		: 
+ **  RETURN 		: -2 or -1 or number of bytes received
  **
  ******************************************************************/
 int checkTimeout(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len){
@@ -251,17 +251,18 @@ int checkTimeout(int sockfd, char *buf, struct sockaddr_storage their_addr, sock
 	return recvfrom(sockfd, buf, MAXBUFLEN-1 , 0, (struct sockaddr *)&their_addr, &addr_len);
 }
 
-/*******************************************************************
+/************************************************************************************
  **  FUNCTION NAME	: maxTries
  **
  **  DESCRIPTION	: The maximum number of tries the host will
  			  try to send the packet to the other host
  **
- **  PARAMETERS		: 
+ **  PARAMETERS		: int sockfd, char *buf, struct sockaddr_storage their_addr, 
+                          socklen_t addr_len, struct addrinfo *res, char *t_msg
  **
  **  RETURN 		: numbytes
  **
- ******************************************************************/
+ *************************************************************************************/
 int maxTries(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len, struct addrinfo *res, char *t_msg){
 	int times;
 	int numbytes;
@@ -300,16 +301,17 @@ int maxTries(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_
 	}
 	return numbytes;
 }
-/*******************************************************************
+/***********************************************************************************
  **  FUNCTION NAME	: readRequest
  **
  **  DESCRIPTION	: Server upon receiving read request
  **
- **  PARAMETERS		: 
+ **  PARAMETERS		: int sockfd, char *buf, struct sockaddr_storage their_addr,
+                          socklen_t addr_len, struct addrinfo *res
  **
- **  RETURN 		: 
+ **  RETURN 		: EXIT_SUCCESS or EXIT_FAILURE
  **
- ******************************************************************/
+ ************************************************************************************/
 int readRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len, struct addrinfo *res)
 {
 		char filename[MAX_FILENAME_LEN];
@@ -393,17 +395,18 @@ int readRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, sockl
 		return EXIT_SUCCESS;
 }
 
-/*******************************************************************
+/************************************************************************************
  **  FUNCTION NAME	: writeRequest
  **
  **  DESCRIPTION	: Server gets a write request with the 
  			  filename
  **
- **  PARAMETERS		: 
+ **  PARAMETERS		: int sockfd, char *buf, struct sockaddr_storage their_addr,
+                          socklen_t addr_len
  **
- **  RETURN 		: 
+ **  RETURN 		: EXIT_SUCCESS or EXIT_FAILURE
  **
- ******************************************************************/
+ ************************************************************************************/
 int writeRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len)
 {
 	char *message = makeACK(WRQ_ACK);
