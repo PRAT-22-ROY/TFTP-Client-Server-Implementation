@@ -5,10 +5,10 @@ The scope of the project is to provide implementation of TFTP Service (UDP based
 
 ## Authors
 
-- [Sravanthi Desham](https://)
-- [Sumit Tomar](https://github.com/)
-- [Puja Kumari](https://github.com/)
-- [Jaya Naga Sai Jaswanth Kuricheti](https:)
+- [Sravanthi Desham](https://github.com/sravanthi-123)
+- [Sumit Tomar](https://github.com/sumit-beep)
+- [Puja Kumari](https://github.com/puja-pearl)
+- [Jaya Naga Sai Jaswanth Kuricheti](https://github.com/Jaswanthk17)
 - [Pratik Roy](https://github.com/PRAT-22-ROY)
 
 ## Requirements
@@ -28,4 +28,31 @@ The scope of the project is to provide implementation of TFTP Service (UDP based
 13. Should include debug log messages  with atleast 4 levels (FATA, INFO, WARNING, DEBUG).
 
  
+
+
+## To run the project
+1. Open two seperate terminals
+
+2. To run the server 
+
+* Open TFTP_Server `cd TFTP_Server`
+* Go to make directory and then `make`
+* Move to bin diretory and then `./main`
+
+
+3. To run the client 
+
+* Open TFTP_Client `cd TFTP_Client`
+* Go to make directory and then `make`
+* For RRQ (Read request) downlaoding files from server
+```bash
+  ./main PUT yourIP fileName
+```
+* For WRQ (Write request) uploading files to server
+```bash
+  ./main GET serverIP fileName
+```
+## Outputs
+
+The outputs can be found here [Results](https://github.com/PRAT-22-ROY/TFTP-Client-Server-Implementation/tree/master/Results)
 
