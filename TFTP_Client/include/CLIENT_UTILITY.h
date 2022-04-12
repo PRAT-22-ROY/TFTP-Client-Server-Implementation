@@ -18,6 +18,9 @@
 /***************************************
  * 		INCLUDES
  **************************************/
+ 
+ #ifndef __CLIENT_UTILITY_H__
+ #define __CLIENT_UTILITY_H__
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -36,14 +39,19 @@
 /***************************************
  * 		MACROS
  **************************************/
-# define MYPORT "4950" 		/* port to be opened on server */
+# define MYPORT "4950" 	/* port to be opened on server */
 # define SERVERPORT "4950" 	/* the port users will be connecting to */
-# define MAXBUFLEN 550 		/* get sockaddr, IPv4 or IPv6 */
+# define MAXBUFLEN 550 	/* get sockaddr, IPv4 or IPv6 */
 # define MAX_READ_LEN 512 	/* maximum data size that can be sent on one packet */
-# define MAX_FILENAME_LEN 100 	/* maximum length of file name supported */
+# define MAX_FILENAME_LEN 100 /* maximum length of file name supported */
 # define MAX_PACKETS 99 	/* maximum number of file packets */
 # define MAX_TRIES 3 		/* maximum number of tries if packet times out */
 # define TIME_OUT 5 		/* in seconds */
+#define RRQ_OPCODE "01"	/*opcode for read request*/
+#define WRQ_OPCODE "02"	/*opcode for write reqest*/
+#define DATA_OPCODE "03"	/*opcode for data packet*/
+#define ACK_OPCODE "04"	/*opcode for acknowledgement packet*/
+#define ERR_OPCODE "05"	/*opcode for error packet*/
 
 /*******************************************************************
  **  FUNCTION NAME	: 
@@ -55,7 +63,7 @@
  **  RETURN 		:  
  **
  ******************************************************************/
- void numberToString(char *, int);
+ void numberToString(char *str, int num);
  
 /*******************************************************************
  **  FUNCTION NAME	: 
@@ -67,7 +75,7 @@
  **  RETURN 		:  
  **
  ******************************************************************/
- char* makeRRQ(char *);
+ char* makeRRQ(char *filename);
  
 /*******************************************************************
  **  FUNCTION NAME	: 
@@ -79,7 +87,7 @@
  **  RETURN 		:  
  **
  ******************************************************************/
- char* makeWRQ(char *);
+ char* makeWRQ(char *filename);
  
 /*******************************************************************
  **  FUNCTION NAME	: 
@@ -91,7 +99,7 @@
  **  RETURN 		:  
  **
  ******************************************************************/
- char* makeDataPacket(int, char *);
+ char* makeDataPacket(int block, char *data);
  
 /*******************************************************************
  **  FUNCTION NAME	: 
@@ -103,7 +111,7 @@
  **  RETURN 		:  
  **
  ******************************************************************/
- char* makeACK(char* );
+ char* makeACK(char* block);
  
 /*******************************************************************
  **  FUNCTION NAME	: 
@@ -115,7 +123,7 @@
  **  RETURN 		:  
  **
  ******************************************************************/
- char* makeERR(char *, char* );
+ char* makeERR(char *errcode, char* errmsg);
  
 /*******************************************************************
  **  FUNCTION NAME	: 
@@ -127,7 +135,7 @@
  **  RETURN 		:  
  **
  ******************************************************************/
- void *getAddress(struct sockaddr *);
+ void *getAddress(struct sockaddr *sa);
  
 /*******************************************************************
  **  FUNCTION NAME	: 
@@ -139,7 +147,7 @@
  **  RETURN 		:  
  **
  ******************************************************************/
- int checkTimeout(int , char *, struct sockaddr_storage *, socklen_t);
+ int checkTimeout(int sockfd, char *buf, struct sockaddr_storage *their_addr, socklen_t addr_len);
  
 /*******************************************************************
  **  FUNCTION NAME	: 
@@ -151,7 +159,7 @@
  **  RETURN 		:  
  **
  ******************************************************************/
- int maxTries(int ,char *,struct sockaddr_storage *,socklen_t ,struct addrinfo *,char *);
+ int maxTries(int sockfd,char *buf,struct sockaddr_storage *their_addr, socklen_t addr_len,struct addrinfo *res,char *last_message);
  
 /*******************************************************************
  **  FUNCTION NAME	: 
@@ -163,7 +171,7 @@
  **  RETURN 		:  
  **
  ******************************************************************/
- int readFile(int , struct sockaddr_storage ,struct addrinfo *, char *,char *);
+ int readFile(int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res, char *file,char *server);
  
 /*******************************************************************
  **  FUNCTION NAME	: 
@@ -175,7 +183,7 @@
  **  RETURN 		:  
  **
  ******************************************************************/
- int writeFile(int , struct sockaddr_storage ,struct addrinfo *,char *,char *);
+ int writeFile(int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,char *file,char *server);
  
 /*******************************************************************
  **  FUNCTION NAME	: 
@@ -187,7 +195,7 @@
  **  RETURN 		:  
  **
  ******************************************************************/
- void errorHandler(int , const char *);
+ void errorHandler(int ret, const char *mesg);
 
 /*******************************************************************
  **  FUNCTION NAME	: 
@@ -199,4 +207,6 @@
  **  RETURN 		:  
  **
  ******************************************************************/
- int logger(char* , char, int );
+ int logger(char* message, char logType,const char *funcName,int lineNo);
+ 
+ #endif 

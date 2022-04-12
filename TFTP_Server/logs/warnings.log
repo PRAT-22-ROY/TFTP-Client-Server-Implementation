@@ -1,0 +1,60 @@
+~~Tue Apr 12 13:17:33 2022
+[./../src/server.c : readRequest : 327]	Server: Error file not found
+----------
+~~Tue Apr 12 13:17:33 2022
+[./../src/server.c : main : 122]	Server: Read request unsuccesful
+----------
+~~Tue Apr 12 13:17:43 2022
+[./../src/server.c : writeRequest : 448]	Server: got error packet
+----------
+~~Tue Apr 12 13:17:43 2022
+[./../src/server.c : main : 134]	Server: Write request unsuccesful
+----------
+~~Tue Apr 12 13:17:56 2022
+[./../src/server.c : writeRequest : 448]	Server: got error packet
+----------
+~~Tue Apr 12 13:17:56 2022
+[./../src/server.c : main : 134]	Server: Write request unsuccesful
+----------
+~~Tue Apr 12 13:17:59 2022
+[./../src/server.c : readRequest : 327]	Server: Error file not found
+----------
+~~Tue Apr 12 13:17:59 2022
+[./../src/server.c : main : 122]	Server: Read request unsuccesful
+----------
+~~Tue Apr 12 14:59:22 2022
+[./../src/server.c : writeRequest : 448]	Server: got error packet
+----------
+~~Tue Apr 12 14:59:22 2022
+[./../src/server.c : main : 134]	Server: Write request unsuccesful
+----------
+~~Tue Apr 12 14:59:33 2022
+[./../src/server.c : readRequest : 327]	Server: Error file not found
+----------
+~~Tue Apr 12 14:59:33 2022
+[./../src/server.c : main : 122]	Server: Read request unsuccesful
+----------
+~~Tue Apr 12 14:59:38 2022
+[./../src/server.c : writeRequest : 448]	Server: got error packet
+----------
+~~Tue Apr 12 14:59:38 2022
+[./../src/server.c : main : 134]	Server: Write request unsuccesful
+----------
+~~Tue Apr 12 16:08:57 2022
+[./../src/server.c : writeRequest : 448]	Server: got error packet
+----------
+~~Tue Apr 12 16:08:57 2022
+[./../src/server.c : main : 134]	Server: Write request unsuccesful
+----------
+~~Tue Apr 12 16:24:35 2022
+[./../src/server.c : readRequest : 327]	Server: Error file not found
+----------
+~~Tue Apr 12 16:24:35 2022
+[./../src/server.c : main : 122]	Server: Read request unsuccesful
+----------
+~~Tue Apr 12 16:25:58 2022
+[./../src/server.c : writeRequest : 448]	Server: got error packet
+----------
+~~Tue Apr 12 16:25:58 2022
+[./../src/server.c : main : 134]	Server: Write request unsuccesful
+----------
