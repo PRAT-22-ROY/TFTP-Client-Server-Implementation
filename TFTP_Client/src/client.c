@@ -8,8 +8,8 @@
  **  
  **  DATE	    NAME	      REFERENCE	                REASON
  **  ------------------------------------------------------------------------------------
- **  04 April 2022                   
- **
+ **  04 April 2022  Sprint_Group_5  TFTP_03,TFTP_05,TFTP_06,TFTP_07,TFTP_08,TFTP_12,TFTP_13                 
+ **  Sprint Assessment
  **
  **  Copyright @ 2022 Capgemini Engineering All Rights Reserved
  **
@@ -181,9 +181,9 @@ void *getAddress(struct sockaddr *sa){
  **
  **  DESCRIPTION	: Checks for timeout
  **
- **  PARAMETERS		: 
+ **  PARAMETERS		: int sockfd, char *buf, struct sockaddr_storage *their_addr, socklen_t addr_len
  **
- **  RETURN 		: 
+ **  RETURN 		: -2 or -1 or number of bytes received
  **
  ******************************************************************/
  int checkTimeout(int sockfd, char *buf, struct sockaddr_storage *their_addr, socklen_t addr_len)
@@ -221,9 +221,9 @@ void *getAddress(struct sockaddr *sa){
  **
  **  DESCRIPTION	: Function to write file to server
  **
- **  PARAMETERS		: 
+ **  PARAMETERS		: int sockfd,char *buf,struct sockaddr_storage *their_addr, socklen_t addr_len,struct addrinfo *res,char *last_message
  **
- **  RETURN 		: 
+ **  RETURN 		: numBytes
  **
  ******************************************************************/
  int maxTries(int sockfd,char *buf,struct sockaddr_storage *their_addr, socklen_t addr_len,struct addrinfo *res,char *last_message)
@@ -279,9 +279,9 @@ void *getAddress(struct sockaddr *sa){
  **
  **  DESCRIPTION	: Function to read file from server
  **
- **  PARAMETERS	: 
+ **  PARAMETERS	        : int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res, char *file,char *server
  **
- **  RETURN 		: 
+ **  RETURN 		: EXIT_SUCCESS
  **
  ******************************************************************/
  
@@ -398,13 +398,13 @@ void *getAddress(struct sockaddr *sa){
  **
  **  DESCRIPTION	: Function to write file to server
  **
- **  PARAMETERS		: 
+ **  PARAMETERS		: int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,char *file,char *server
  **
- **  RETURN 		: 
+ **  RETURN 		: EXIT_SUCCESS
  **
  ******************************************************************/
  
- int writeFile(int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,char *file,char *server)
+ int writeFile(int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res, char *file,char *server)
 {
 	char *message = makeWRQ(file);
 	char *last_message;
