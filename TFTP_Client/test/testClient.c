@@ -2,11 +2,11 @@
 
  *     FILENAME           :    testClient.c
  *
- *     DESCRIPTION        :    Sprint-1 : 
+ *     DESCRIPTION        :    Sprint-1  
  
  				
  *
- *     REVISION HISTORY   :   Last revised on (  )
+ *     REVISION HISTORY   :   Last revised on (12/04/2022)
  *
  *     DATE                GROUP MEMBERS              REFERENCE               REASON
  *     --------------------------------------------------------------------------------------------------
@@ -31,11 +31,11 @@
 
 
 /******************************************************
-**FUNCTION NAME : 
+**FUNCTION NAME : testMakeRRQ
 **
-**DESCRIPTION : 
+**DESCRIPTION : Function to test makeRRQ function
 **
-**RETURNS : NA
+**RETURNS : void
 **
 *********************************************************/
 void testMakeRRQ(void)
@@ -47,11 +47,11 @@ void testMakeRRQ(void)
 }	
 
 /******************************************************
-**FUNCTION NAME : 
+**FUNCTION NAME : testMakeWRQ
 **
-**DESCRIPTION : 
+**DESCRIPTION : Function to test makeWRQ function
 **
-**RETURNS : NA
+**RETURNS : void
 **
 *********************************************************/
 void testMakeWRQ(void)
@@ -63,11 +63,11 @@ void testMakeWRQ(void)
 }	
 
 /******************************************************
-**FUNCTION NAME : 
+**FUNCTION NAME : testMakeACK
 **
-**DESCRIPTION : 
+**DESCRIPTION : Function to test makeACK function
 **
-**RETURNS : NA
+**RETURNS : void
 **
 *********************************************************/
 void testMakeACK(void)
@@ -79,11 +79,11 @@ void testMakeACK(void)
 }
 
 /******************************************************
-**FUNCTION NAME : 
+**FUNCTION NAME : testMakeData 
 **
-**DESCRIPTION : 
+**DESCRIPTION : Function to test makeData function
 **
-**RETURNS : NA
+**RETURNS : void
 **
 *********************************************************/
 void testMakeData(void)
@@ -97,11 +97,11 @@ void testMakeData(void)
 }
 
 /******************************************************
-**FUNCTION NAME : 
+**FUNCTION NAME : testMakeERR
 **
-**DESCRIPTION : 
+**DESCRIPTION : Function to test test makeERR function
 **
-**RETURNS : NA
+**RETURNS : void
 **
 *********************************************************/
 void testMakeERR(void)
