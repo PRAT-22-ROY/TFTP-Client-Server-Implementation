@@ -8,8 +8,8 @@
  **  
  **  DATE	    NAME	      REFERENCE	                REASON
  **  ------------------------------------------------------------------------------------
- **  04 April 2022  Sprint_Group_5  TFTP_03,TFTP_05,TFTP_06,TFTP_07,TFTP_08,TFTP_12,TFTP_13                 
- **  Sprint Assessment
+ **  04 April 2022    Sprint_Group_5     TFTP_SRS            Sprint Assessment     
+ **  
  **
  **  Copyright @ 2022 Capgemini Engineering All Rights Reserved
  **
@@ -158,16 +158,16 @@ char* makeERR(char *errcode, char* errmsg)
 	return packet;
 }
 
-/*******************************************************************
+/*****************************************************************************
  **  FUNCTION NAME	: getAddress
  **
- **  DESCRIPTION	:  getAddress
+ **  DESCRIPTION	: to typecast an unspecific address into IPv4 or IPv6
  **
  **  PARAMETERS		: struct sockaddr *sa 
  **
  **  RETURN 		: void
  **
- ******************************************************************/
+ ******************************************************************************/
  
 void *getAddress(struct sockaddr *sa){
 	if (sa->sa_family == AF_INET) {
@@ -176,16 +176,17 @@ void *getAddress(struct sockaddr *sa){
 	return &(((struct sockaddr_in6*)sa)->sin6_addr);
 }
  
-/*******************************************************************
+/************************************************************************************
  **  FUNCTION NAME	: checkTimeout
  **
  **  DESCRIPTION	: Checks for timeout
  **
- **  PARAMETERS		: int sockfd, char *buf, struct sockaddr_storage *their_addr, socklen_t addr_len
+ **  PARAMETERS		: int sockfd, char *buf, struct sockaddr_storage *their_addr,
+                          socklen_t addr_len
  **
  **  RETURN 		: -2 or -1 or number of bytes received
  **
- ******************************************************************/
+ **************************************************************************************/
  int checkTimeout(int sockfd, char *buf, struct sockaddr_storage *their_addr, socklen_t addr_len)
 {
 	fd_set fds;
@@ -216,16 +217,17 @@ void *getAddress(struct sockaddr *sa){
 	return recvfrom(sockfd, buf, MAXBUFLEN-1 , 0, (struct sockaddr *)their_addr, &addr_len);
 }
 
-/*******************************************************************
+/***********************************************************************************
  **  FUNCTION NAME	: maxTries
  **
  **  DESCRIPTION	: Function to write file to server
  **
- **  PARAMETERS		: int sockfd,char *buf,struct sockaddr_storage *their_addr, socklen_t addr_len,struct addrinfo *res,char *last_message
+ **  PARAMETERS		: int sockfd,char *buf,struct sockaddr_storage *their_addr,
+                          socklen_t addr_len,struct addrinfo *res,char *last_message
  **
  **  RETURN 		: numBytes
  **
- ******************************************************************/
+ ************************************************************************************/
  int maxTries(int sockfd,char *buf,struct sockaddr_storage *their_addr, socklen_t addr_len,struct addrinfo *res,char *last_message)
 {
 	logger("Max tries function",'d',__func__,__LINE__);
