@@ -161,7 +161,7 @@ char* makeERR(char *errcode, char* errmsg)
 /*****************************************************************************
  **  FUNCTION NAME	: getAddress
  **
- **  DESCRIPTION	: to typecast an unspecific address into IPv4 or IPv6
+ **  DESCRIPTION	: it typecasts an unspecific address into IPv4 or IPv6
  **
  **  PARAMETERS		: struct sockaddr *sa 
  **
