@@ -8,7 +8,7 @@
  **  
  **  DATE	    NAME		   REFERENCE	    REASON
  **  ------------------------------------------------------------------------------------
- **  29 Mar 2022    
+ **  12 April 2022   Sprint_Group_5    TFTP_SRS   Sprint Assessment
  **
  **
  **  Copyright @ 2022 Capgemini Engineering All Rights Reserved
@@ -54,157 +54,157 @@
 #define ERR_OPCODE "05"	/*opcode for error packet*/
 
 /*******************************************************************
- **  FUNCTION NAME	: 
+ **  FUNCTION NAME	: numberToString
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		:   			  
+ **  PARAMETERS		: char *str, int num		  
  **
- **  RETURN 		:  
+ **  RETURN 		:  void
  **
  ******************************************************************/
  void numberToString(char *str, int num);
  
 /*******************************************************************
- **  FUNCTION NAME	: 
+ **  FUNCTION NAME	: makeRRQ
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		:   			  
+ **  PARAMETERS		: char *filename  
  **
- **  RETURN 		:  
+ **  RETURN 		:  void
  **
  ******************************************************************/
  char* makeRRQ(char *filename);
  
 /*******************************************************************
- **  FUNCTION NAME	: 
+ **  FUNCTION NAME	: makeRRQ
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Funtion Prototype
  **
- **  PARAMETERS		:   			  
+ **  PARAMETERS		: char *filename 			  
  **
- **  RETURN 		:  
+ **  RETURN 		:  char*
  **
  ******************************************************************/
  char* makeWRQ(char *filename);
  
 /*******************************************************************
- **  FUNCTION NAME	: 
+ **  FUNCTION NAME	: makeDataPacket
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		:   			  
+ **  PARAMETERS		: int block, char *data 			  
  **
- **  RETURN 		:  
+ **  RETURN 		:  void
  **
  ******************************************************************/
  char* makeDataPacket(int block, char *data);
  
 /*******************************************************************
- **  FUNCTION NAME	: 
+ **  FUNCTION NAME	: makeACK
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		:   			  
+ **  PARAMETERS		: char* block			  
  **
- **  RETURN 		:  
+ **  RETURN 		:  char*
  **
  ******************************************************************/
  char* makeACK(char* block);
  
 /*******************************************************************
- **  FUNCTION NAME	: 
+ **  FUNCTION NAME	: makeERR
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		:   			  
+ **  PARAMETERS		: char *errcode, char* errmsg 			  
  **
- **  RETURN 		:  
+ **  RETURN 		: char* 
  **
  ******************************************************************/
  char* makeERR(char *errcode, char* errmsg);
  
 /*******************************************************************
- **  FUNCTION NAME	: 
+ **  FUNCTION NAME	: getAddress
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		:   			  
+ **  PARAMETERS		: struct sockaddr *sa  			  
  **
- **  RETURN 		:  
+ **  RETURN 		:  void
  **
  ******************************************************************/
  void *getAddress(struct sockaddr *sa);
  
 /*******************************************************************
- **  FUNCTION NAME	: 
+ **  FUNCTION NAME	: checkTimeout
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		:   			  
+ **  PARAMETERS		: int sockfd, char *buf, struct sockaddr_storage *their_addr, socklen_t addr_len			  
  **
- **  RETURN 		:  
+ **  RETURN 		:  int
  **
  ******************************************************************/
  int checkTimeout(int sockfd, char *buf, struct sockaddr_storage *their_addr, socklen_t addr_len);
  
 /*******************************************************************
- **  FUNCTION NAME	: 
+ **  FUNCTION NAME	: maxTries
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		:   			  
+ **  PARAMETERS		: int sockfd,char *buf,struct sockaddr_storage *their_addr, socklen_t addr_len,struct addrinfo *res,char *last_messag 			  
  **
- **  RETURN 		:  
+ **  RETURN 		: int 
  **
  ******************************************************************/
  int maxTries(int sockfd,char *buf,struct sockaddr_storage *their_addr, socklen_t addr_len,struct addrinfo *res,char *last_message);
  
 /*******************************************************************
- **  FUNCTION NAME	: 
+ **  FUNCTION NAME	: readFile
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		:   			  
+ **  PARAMETERS		: int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res, char *file,char *server  			  
  **
- **  RETURN 		:  
+ **  RETURN 		:  int
  **
  ******************************************************************/
  int readFile(int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res, char *file,char *server);
  
 /*******************************************************************
- **  FUNCTION NAME	: 
+ **  FUNCTION NAME	: writeFile 
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		:   			  
+ **  PARAMETERS		: int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,char *file,char *server 			  
  **
- **  RETURN 		:  
+ **  RETURN 		: int 
  **
  ******************************************************************/
  int writeFile(int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,char *file,char *server);
  
 /*******************************************************************
- **  FUNCTION NAME	: 
+ **  FUNCTION NAME	: errorHandler
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		:   			  
+ **  PARAMETERS		: int ret, const char *mesg  			  
  **
- **  RETURN 		:  
+ **  RETURN 		:  void
  **
  ******************************************************************/
  void errorHandler(int ret, const char *mesg);
 
 /*******************************************************************
- **  FUNCTION NAME	: 
+ **  FUNCTION NAME	: logger
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		:   			  
+ **  PARAMETERS		: char* message, char logType,const char *funcName,int lineNo  			  
  **
- **  RETURN 		:  
+ **  RETURN 		: int  
  **
  ******************************************************************/
  int logger(char* message, char logType,const char *funcName,int lineNo);
