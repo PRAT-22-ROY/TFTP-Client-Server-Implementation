@@ -18,7 +18,7 @@
 /***************************************
  * 		INCLUDES
  **************************************/
-#include "SERVER_UTILITY.h"
+#include "server_utility.h"
 
 static FILE *logFptr;
 
@@ -67,11 +67,11 @@ void numberToString(char *temp, int num)
  **
  ******************************************************************/
 char* makeDataPacket(int block, char *data){
-	char *packet;
+	char *packet=NULL;
 	char temp[3];
 	numberToString(temp, block);
 	packet = malloc(4+strlen(data)+1);
-	strcpy(packet, "03");//opcode
+	strcpy(packet, DATA_OPCODE);//opcode
 	strcat(packet, temp);
 	strcat(packet, data);
 	return packet;
@@ -88,9 +88,9 @@ char* makeDataPacket(int block, char *data){
  **
  ******************************************************************/
 char* makeACK(char* block){
-	char *packet;
+	char *packet=NULL;
 	packet = malloc(2+strlen(block)+1);
-	strcpy(packet, "04");//opcode
+	strcpy(packet, ACK_OPCODE);//opcode
 	strcat(packet, block);
 	return packet;
 }
@@ -106,11 +106,11 @@ char* makeACK(char* block){
  **
  ******************************************************************/
 char* makeERR(char *errcode, char* errmsg){
-	char *packet;
+	char *packet=NULL;
 	packet = malloc(4+strlen(errmsg)+1);
 	size_t len=sizeof(packet);
 	memset(packet, 0, len);
-	strcat(packet, "05");//opcode
+	strcat(packet, ERR_OPCODE);//opcode
 	strcat(packet, errcode);
 	strcat(packet, errmsg);
 	return packet;
@@ -240,7 +240,7 @@ int checkTimeout(int sockfd, char *buf, struct sockaddr_storage their_addr, sock
 	if (ret == 0)
 	{
 		printf("timeout\n");
-		logger("Server: Timeout",'w',__LINE__);
+		logger("Server: Timeout",'w',__func__,__LINE__);
 		return -2; /* Timeout */
 	} 
 	else if (ret == -1)
@@ -270,13 +270,13 @@ int maxTries(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_
 		if(times == MAX_TRIES)
 		{
 			printf("SERVER: MAX NUMBER OF TRIES REACHED\n");
-			logger("Server: Max number of tries reached",'f',__LINE__);
+			logger("Server: Max number of tries reached",'f',__func__,__LINE__);
 			return -1;
 		}
 		numbytes = checkTimeout(sockfd, buf, their_addr, addr_len);
 		if(numbytes == -1)
 		{	/* Error */
-			logger("Server: recvfrom",'f',__LINE__);
+			logger("Server: recvfrom",'f',__func__,__LINE__);
 			errorHandler(numbytes,"SERVER: recvfrom");
 		} 
 		else if(numbytes == -2)
@@ -285,11 +285,11 @@ int maxTries(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_
 			int temp_bytes;
 			if((temp_bytes = sendto(sockfd, t_msg, strlen(t_msg), 0, res->ai_addr, res->ai_addrlen)) == -1)
 			{
-				logger("Server: sendto",'f',__LINE__);
+				logger("Server: sendto",'f',__func__,__LINE__);
 				errorHandler(temp_bytes,"SERVER: ACK: sendto");
 			}
 			printf("SERVER: sent %d bytes AGAIN\n", temp_bytes);
-			logger("Server: send bytes again",'i',__LINE__);
+			logger("Server: sent bytes again",'i',__func__,__LINE__);
 			continue;
 		} 
 		else 
@@ -323,17 +323,17 @@ int readRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, sockl
 		{ 	
 			/* Sending error packet - File not found */
 			fprintf(stderr,"SERVER: file '%s' does not exist, sending error packet\n", filename);
-			char *e_msg = makeERR("02", "ERROR_FILE_NOT_FOUND");
-			logger("Server: Error file not found",'w',__LINE__);
+			char *e_msg = makeERR("01", "ERROR_FILE_NOT_FOUND");
+			logger("Server: Error file not found",'w',__func__,__LINE__);
 			printf("%s\n", e_msg);
-			logger("Server: Sendto()",'d',__LINE__);
+			logger("Server: Sendto()",'d',__func__,__LINE__);
 			sendto(sockfd, e_msg, strlen(e_msg), 0, (struct sockaddr *)&their_addr, addr_len);
 			free(e_msg);
 			return EXIT_FAILURE;
 		}
 		
 		/* Starting to send file */
-		logger("Starting to send file",'d',__LINE__);
+		logger("Starting to send file",'d',__func__,__LINE__);
 		int block = 1;
 		fseek(fp, 0, SEEK_END);
 		int total = ftell(fp);
@@ -363,21 +363,23 @@ int readRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, sockl
 			t_msg = makeDataPacket(block, temp);
 			if((numbytes = sendto(sockfd, t_msg, strlen(t_msg), 0, (struct sockaddr *)&their_addr, addr_len)) == -1)
 			{
-				logger("Server: ACK sendto",'f',__LINE__);
+				logger("Server: ACK sendto",'f',__func__,__LINE__);
 				errorHandler(numbytes,"SERVER ACK: sendto");
 			}
 			printf("SERVER: sent %d bytes\n", numbytes);
 
 			/* Waiting for acknowledgement - Data packet */
 			/* Checks the maxTries func */
-			logger("Server: Maxtries",'d',__LINE__);
+			logger("Server: Maxtries",'d',__func__,__LINE__);
 			numbytes=maxTries(sockfd, buf, their_addr, addr_len, res, t_msg);
 			if(numbytes==-1)
 			{
-				logger("Server: failure",'w',__LINE__);
+				logger("Server: failure",'w',__func__,__LINE__);
+				free(t_msg);
+				fclose(fp);
 				return EXIT_FAILURE;
 			}
-			logger("Server: Got packet from client",'i',__LINE__);
+			logger("Server: Got packet from client",'i',__func__,__LINE__);
 			printf("SERVER: got packet from %s\n", inet_ntop(their_addr.ss_family, getAddress((struct sockaddr *)&their_addr), dst, sizeof dst));
 			printf("SERVER: packet is %d bytes long\n", numbytes);
 			buf[numbytes] = '\0';
@@ -404,10 +406,10 @@ int readRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, sockl
  ******************************************************************/
 int writeRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len)
 {
-	char *message = makeACK("00");
+	char *message = makeACK(WRQ_ACK);
 	int numbytes;
 	int flag=1;
-	char *t_msg;
+	char *t_msg=NULL;
 	FILE *fp;
 	char dst[INET6_ADDRSTRLEN];
 	char filename[MAX_FILENAME_LEN];
@@ -417,7 +419,7 @@ int writeRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, sock
 	strcpy(last_sent_ack, message);
 	if((numbytes = sendto(sockfd, message, strlen(message), 0, (struct sockaddr *)&their_addr, addr_len)) == -1)
 	{
-		logger("Server: ACK sendto",'f',__LINE__);
+		logger("Server: ACK sendto",'f',__func__,__LINE__);
 		errorHandler(numbytes,"SERVER ACK: sendto");
 	}
 	strcpy(filename, buf+2);
@@ -426,13 +428,13 @@ int writeRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, sock
 	do
 	{
 		/* Receiving packet data */
-		logger("Server: Receiving packet data",'d',__LINE__);
+		logger("Server: Receiving packet data",'d',__func__,__LINE__);
 		if ((numbytes = recvfrom(sockfd, buf, MAXBUFLEN-1 , 0, (struct sockaddr *)&their_addr, &addr_len)) == -1) 
 		{
-			logger("Server: recvfrom",'f',__LINE__);
+			logger("Server: recvfrom",'f',__func__,__LINE__);
 			errorHandler(numbytes,"SERVER: recvfrom");
 		}
-		logger("Server got packet from",'i',__LINE__);
+		logger("Server got packet from",'i',__func__,__LINE__);
 		printf("SERVER: got packet from %s\n", inet_ntop(their_addr.ss_family, getAddress((struct sockaddr *)&their_addr), dst, sizeof dst));
 		printf("SERVER: packet is %d bytes long\n", numbytes);
 		buf[numbytes] = '\0';
@@ -443,17 +445,20 @@ int writeRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, sock
 			if(buf[0]=='0' && buf[1]=='5')
 			{
 				fprintf(stderr, "SERVER: got error packet: %s\n", buf);
-				logger("Server: got error packet",'w',__LINE__);
+				logger("Server: got error packet",'w',__func__,__LINE__);
 				free(message);
 				return EXIT_FAILURE;
 			}
 			if(access(filename, F_OK) != -1)
 			{ 
 				/* Sending error packet duplicate file */
-				logger("Server: Sending error packet",'d',__LINE__);
+				logger("Server: Sending error packet",'d',__func__,__LINE__);
 				fprintf(stderr,"SERVER: file %s already exists, sending error packet\n", filename);
 				char *e_msg = makeERR("06", "ERROR_FILE_ALREADY_EXISTS");
-				sendto(sockfd, e_msg, strlen(e_msg), 0, (struct sockaddr *)&their_addr, addr_len);
+				if((numbytes=sendto(sockfd, e_msg, strlen(e_msg), 0, (struct sockaddr *)&their_addr, addr_len))==-1){
+					logger("Server: sendto system call failed",'f',__func__,__LINE__);
+					errorHandler(numbytes,"SERVER ERROR MESSAGE: sendto");
+				}
 				free(e_msg);
 				free(message);
 				return EXIT_FAILURE;
@@ -462,13 +467,17 @@ int writeRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, sock
 			if(fp == NULL || access(filename, W_OK) == -1)
 			{ 
 				/* Sending error packet access denied */
-				logger("Server: Access denied",'w',__LINE__);
+				logger("Server: Access denied",'w',__func__,__LINE__);
 				fprintf(stderr,"SERVER: file %s access denied, sending error packet\n", filename);
-				char *e_msg = makeERR("05", "ERROR_ACCESS_DENIED");
-				logger("Server: sendto",'d',__LINE__);
-				sendto(sockfd, e_msg, strlen(e_msg), 0, (struct sockaddr *)&their_addr, addr_len);
+				char *e_msg = makeERR("02", "ERROR_ACCESS_DENIED");
+				logger("Server: sendto",'d',__func__,__LINE__);
+				if((numbytes=sendto(sockfd, e_msg, strlen(e_msg), 0, (struct sockaddr *)&their_addr, addr_len))==-1){
+					logger("Server: sendto system call failed",'f',__func__,__LINE__);
+					errorHandler(numbytes,"SERVER ERROR MESSAGE: sendto");
+				}
 				free(e_msg);
 				free(message);
+				fclose(fp);
 				return EXIT_FAILURE;
 			}
 			flag=0;
@@ -476,8 +485,11 @@ int writeRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, sock
 		/* Sending last acknowledgement again as it has not reached */
 		if(strcmp(buf, last_recv_message) == 0)
 		{
-			logger("Server: last ack sending",'i',__LINE__);
-			sendto(sockfd, last_sent_ack, strlen(last_sent_ack), 0, (struct sockaddr *)&their_addr, addr_len);
+			logger("Server: last ack sending",'i',__func__,__LINE__);
+			if((numbytes=sendto(sockfd, last_sent_ack, strlen(last_sent_ack), 0, (struct sockaddr *)&their_addr, addr_len))==-1){
+				logger("Server: sendto system call failed",'f',__func__,__LINE__);
+				errorHandler(numbytes,"SERVER LAST SENT ACK: sendto");
+			}
 			continue;
 		}
 		/* Writing file */
@@ -492,16 +504,16 @@ int writeRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, sock
 		t_msg = makeACK(block);
 		if((numbytes = sendto(sockfd, t_msg, strlen(t_msg), 0, (struct sockaddr *)&their_addr, addr_len)) == -1)
 		{
-			logger("Server: ack sendto",'f',__LINE__);
+			logger("Server: ack sendto",'f',__func__,__LINE__);
 			errorHandler(numbytes,"SERVER ACK: sendto");
 		}
-		logger("Server sent to client",'i',__LINE__);
+		logger("Server sent to client",'i',__func__,__LINE__);
 		printf("SERVER: sent %d bytes\n", numbytes);
 		strcpy(last_sent_ack, t_msg);
 		free(t_msg);
 	}
 	while(c_written == MAX_READ_LEN);
-	logger("Server: New file made",'i',__LINE__);
+	logger("Server: New file made",'i',__func__,__LINE__);
 	printf("NEW FILE: %s SUCCESSFULLY MADE\n", filename);
 	free(message);
 	fclose(fp);
@@ -519,50 +531,50 @@ int writeRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, sock
  **  RETURN 		: EXIT_SUCCESS
  **
  ******************************************************************/
-int logger(char* message, char logType, int lineNo)
+int logger(char* message, char logType, const char *funcName,int lineNo)
 {
-    /* info - i
-     fatal - f
-     warning - w
-     debug - d
-    */
-    char LOG_PATH[]="../logs";
-    time_t ltime = time(NULL);
-    struct tm res;
-    char TIMESTAMP[32];
-    localtime_r(&ltime,&res);
-    asctime_r(&res,TIMESTAMP);
-    FILE *logfile;
-    char logFileName[100];
-    switch(logType)
-    {
-        case 'i':
-            sprintf(logFileName,"%s/info.log",LOG_PATH);
-            logfile = fopen(logFileName,"a+");
-            fprintf(logfile,"~~%s[%s : %d]\t%s\n----------\n",TIMESTAMP,__FILE__, __LINE__, message);
-            fclose(logfile);
-            break;
-        case 'f':
-            sprintf(logFileName,"%s/fatal.log",LOG_PATH);
-            logfile = fopen(logFileName,"a+");
-            fprintf(logfile,"~~%s[%s : %d]\t%s\n----------\n",TIMESTAMP,__FILE__, __LINE__, message);
-            fclose(logfile);
-            break;
-        case 'w':
-            sprintf(logFileName,"%s/warnings.log",LOG_PATH);
-            logfile = fopen(logFileName,"a+");
-            fprintf(logfile,"~~%s[%s : %d]\t%s\n----------\n",TIMESTAMP,__FILE__, __LINE__, message);
-            fclose(logfile);
-            break;
-        case 'd':
-            sprintf(logFileName,"%s/debug.log",LOG_PATH);
-            logfile = fopen(logFileName,"a+");
-            fprintf(logfile,"~~%s[%s : %d]\t%s\n----------\n",TIMESTAMP,__FILE__, __LINE__, message);
-            fclose(logfile);
-            break;
-        
-    }
-    return EXIT_SUCCESS;
+	/* info - i
+	fatal - f
+	warning - w
+	debug - d
+	*/
+	char LOG_PATH[]="../logs";
+	time_t ltime = time(NULL);
+	struct tm res;
+	char TIMESTAMP[32];
+	localtime_r(&ltime,&res);
+	asctime_r(&res,TIMESTAMP);
+	FILE *logfile;
+	char logFileName[100];
+	switch(logType)
+	{
+		case 'i':
+		    sprintf(logFileName,"%s/info.log",LOG_PATH);
+		    logfile = fopen(logFileName,"a+");
+		    fprintf(logfile,"~~%s[%s : %s : %d]\t%s\n----------\n",TIMESTAMP,__FILE__,funcName, lineNo, message);
+		    fclose(logfile);
+		    break;
+		case 'f':
+		    sprintf(logFileName,"%s/fatal.log",LOG_PATH);
+		    logfile = fopen(logFileName,"a+");
+		    fprintf(logfile,"~~%s[%s : %s : %d]\t%s\n----------\n",TIMESTAMP,__FILE__, funcName,lineNo, message);
+		    fclose(logfile);
+		    break;
+		case 'w':
+		    sprintf(logFileName,"%s/warnings.log",LOG_PATH);
+		    logfile = fopen(logFileName,"a+");
+		    fprintf(logfile,"~~%s[%s : %s : %d]\t%s\n----------\n",TIMESTAMP,__FILE__,funcName, lineNo, message);
+		    fclose(logfile);
+		    break;
+		case 'd':
+		    sprintf(logFileName,"%s/debug.log",LOG_PATH);
+		    logfile = fopen(logFileName,"a+");
+		    fprintf(logfile,"~~%s[%s : %s :%d]\t%s\n----------\n",TIMESTAMP,__FILE__, funcName,lineNo, message);
+		    fclose(logfile);
+		    break;
+		
+	}
+	return EXIT_SUCCESS;
 }
 
 /*******************************************************************

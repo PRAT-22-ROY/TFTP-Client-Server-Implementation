@@ -19,6 +19,9 @@
  * 		INCLUDES
  **************************************/
 
+#ifndef __SERVER_UTILITY_H__
+#define __SEVER_UTILITY_H__
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -47,18 +50,23 @@
 #define MAX_PACKETS 99 /* Maximum number of file packets */
 #define MAX_TRIES 3 /* Maximum number of tries if packet times out */
 #define TIME_OUT 5 /* in seconds */
+#define DATA_OPCODE "03"  /*opcode for data packet*/
+#define ACK_OPCODE "04"   /*opcode for acknowledgement packet*/
+#define ERR_OPCODE "05"   /*opcode for error packet*/
+#define WRQ_ACK "00"      /*Acknowledgement block for write request*/
+
 
 /*******************************************************************
  **  FUNCTION NAME	: logOpen 
  **
  **  DESCRIPTION	: 
  **
- **  PARAMETERS		:  
+ **  PARAMETERS	:  
  **
  **  RETURN 		: 
  **
  ******************************************************************/
-void logOpen(const char *);
+void logOpen(const char *logFileName);
 
 /*******************************************************************
  **  FUNCTION NAME	: logClose
@@ -77,48 +85,48 @@ void logClose(void);
  **
  **  DESCRIPTION	: Maintaining logs of all requests from client
  **
- **  PARAMETERS		: const char *format, ....
+ **  PARAMETERS	: const char *format, ....
  **
  **  RETURN 		: void
  **
  ******************************************************************/
-void logMessage(const char *,...);
+void logMessage(const char *format,...);
 
 /*******************************************************************
  **  FUNCTION NAME	: numberToString
  **
  **  DESCRIPTION	: Converts block number to string of length 2
  **
- **  PARAMETERS		: char *temp, int num
+ **  PARAMETERS	: char *temp, int num
  **
  **  RETURN 		: void
  **
  ******************************************************************/
-void numberToString(char *, int );
+void numberToString(char *str, int num);
 
 /*******************************************************************
  **  FUNCTION NAME	: makeDataPacket
  **
  **  DESCRIPTION	: Makes data packet
  **
- **  PARAMETERS		: int block, char *data
+ **  PARAMETERS	: int block, char *data
  **
  **  RETURN 		: packet
  **
  ******************************************************************/
-char* makeDataPacket(int , char *);
+char* makeDataPacket(int block, char *data);
 
 /*******************************************************************
  **  FUNCTION NAME	: makeACK
  **
  **  DESCRIPTION	: Makes acknowledgement packet
  **
- **  PARAMETERS		: char* block
+ **  PARAMETERS	: char* block
  **
  **  RETURN 		: packet
  **
  ******************************************************************/
-char* makeACK(char* );
+char* makeACK(char* block);
 
 /*******************************************************************
  **  FUNCTION NAME	: makeERR
@@ -130,19 +138,19 @@ char* makeACK(char* );
  **  RETURN 		: packet
  **
  ******************************************************************/
-char* makeERR(char *, char* );
+char* makeERR(char *errcode, char* errmsg);
 
 /*******************************************************************
  **  FUNCTION NAME	: checkTimeout
  **
  **  DESCRIPTION	: Checks for the timeout condition
  **
- **  PARAMETERS		:  
+ **  PARAMETERS	:  
  **
  **  RETURN 		: 
  **
  ******************************************************************/
-int checkTimeout(int , char *, struct sockaddr_storage , socklen_t);
+int checkTimeout(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len);
 
 /*******************************************************************
  **  FUNCTION NAME	: maxTries
@@ -155,31 +163,31 @@ int checkTimeout(int , char *, struct sockaddr_storage , socklen_t);
  **  RETURN 		: numbytes
  **
  ******************************************************************/
-int maxTries(int , char *, struct sockaddr_storage , socklen_t , struct addrinfo *, char *);
+int maxTries(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len, struct addrinfo *res, char *t_msg);
  
 /*******************************************************************
  **  FUNCTION NAME	: getAddress
  **
  **  DESCRIPTION	: 
  **
- **  PARAMETERS		:  
+ **  PARAMETERS	:  
  **
  **  RETURN 		: void
  **
  ******************************************************************/
-void *getAddress(struct sockaddr *);
+void *getAddress(struct sockaddr *sa);
  
 /*******************************************************************
  **  FUNCTION NAME	: readRequest
  **
  **  DESCRIPTION	: Server upon receiving read request
  **
- **  PARAMETERS		:  
+ **  PARAMETERS	:  
  **
  **  RETURN 		: 
  **
  ******************************************************************/
-int readRequest(int, char *, struct sockaddr_storage, socklen_t, struct addrinfo *);
+int readRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len, struct addrinfo *res);
 
 /*******************************************************************
  **  FUNCTION NAME	: writeRequest
@@ -187,36 +195,36 @@ int readRequest(int, char *, struct sockaddr_storage, socklen_t, struct addrinfo
  **  DESCRIPTION	: Server gets a write request with the 
  			  filename
  **
- **  PARAMETERS		:  
+ **  PARAMETERS	:  
  			  
  **
  **  RETURN 		: 
  **
  ******************************************************************/
-int writeRequest(int ,char *, struct sockaddr_storage, socklen_t);
+int writeRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len);
 
 /*******************************************************************
  **  FUNCTION NAME	: errorHandler
  **
  **  DESCRIPTION	: Handles the error
  **
- **  PARAMETERS		:  int ret, const char *mesg
+ **  PARAMETERS	:  int ret, const char *mesg
  **
  **  RETURN 		: void
  **
  ******************************************************************/
-void errorHandler(int , const char *);
+void errorHandler(int ret, const char *errMesg);
 /******************************************************************************
  **  FUNCTION NAME	: signalHandler 
  **
  **  DESCRIPTION	: Handles CTRL+c signal and stops the server program
  **
- **  PARAMETERS		: sig
+ **  PARAMETERS	: sig
  **
  **  RETURN 		: void
  **
  *****************************************************************************/
-void signalHandler(int);
+void signalHandler(int sig);
 
 /*******************************************************************
  **  FUNCTION NAME	: logger
@@ -224,10 +232,13 @@ void signalHandler(int);
  **  DESCRIPTION	: Used for debug log messages using 
  			  4 levels 
  **
- **  PARAMETERS		:  char* message, char logType
+ **  PARAMETERS	:  char* message, char logType
  			  
  **
  **  RETURN 		: EXIT_SUCCESS
  **
  ******************************************************************/
-int logger(char*, char, int lineNo);
+int logger(char* message, char logType, const char *funcName,int lineNo );
+
+#endif
+

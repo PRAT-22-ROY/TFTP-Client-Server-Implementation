@@ -1,20 +1,68 @@
 
-~~Mon Apr 11 10:47:16 2022
-[./../src/client.c : 276]	Client: got error packet
+~~Tue Apr 12 13:17:33 2022
+[./../src/client.c : readFile : 334]	Client: got error packet
 ----------
 
-~~Mon Apr 11 10:49:34 2022
-[./../src/client.c : 208]	Client: Timeout
+~~Tue Apr 12 13:17:43 2022
+[./../src/client.c : writeFile : 443]	Client: File does not exist
 ----------
 
-~~Mon Apr 11 10:49:39 2022
-[./../src/client.c : 208]	Client: Timeout
+~~Tue Apr 12 13:17:56 2022
+[./../src/client.c : writeFile : 443]	Client: File does not exist
 ----------
 
-~~Mon Apr 11 10:49:44 2022
-[./../src/client.c : 208]	Client: Timeout
+~~Tue Apr 12 13:17:59 2022
+[./../src/client.c : readFile : 334]	Client: got error packet
 ----------
 
-~~Mon Apr 11 10:49:44 2022
-[./../src/client.c : 353]	Client: Max number of tries reached
+~~Tue Apr 12 14:59:22 2022
+[./../src/client.c : writeFile : 443]	Client: File does not exist
+----------
+
+~~Tue Apr 12 14:59:33 2022
+[./../src/client.c : readFile : 334]	Client: got error packet
+----------
+
+~~Tue Apr 12 14:59:38 2022
+[./../src/client.c : writeFile : 443]	Client: File does not exist
+----------
+
+~~Tue Apr 12 16:03:09 2022
+[./../src/client.c : checkTimeout : 208]	Client: Timeout
+----------
+
+~~Tue Apr 12 16:03:09 2022
+[./../src/client.c : maxTries : 255]	Client: timeout
+----------
+
+~~Tue Apr 12 16:03:14 2022
+[./../src/client.c : checkTimeout : 208]	Client: Timeout
+----------
+
+~~Tue Apr 12 16:03:14 2022
+[./../src/client.c : maxTries : 255]	Client: timeout
+----------
+
+~~Tue Apr 12 16:03:19 2022
+[./../src/client.c : checkTimeout : 208]	Client: Timeout
+----------
+
+~~Tue Apr 12 16:03:19 2022
+[./../src/client.c : maxTries : 255]	Client: timeout
+----------
+
+~~Tue Apr 12 16:03:19 2022
+[./../src/client.c : maxTries : 239]	Client: Max number of tries reached
+----------
+
+~~Tue Apr 12 16:08:57 2022
+[./../src/client.c : writeFile : 443]	Client: File does not exist
+----------
+
+~~Tue Apr 12 16:24:35 2022
+[./../src/client.c : readFile : 334]	Client: got error packet
+----------
+
+~~Tue Apr 12 16:25:58 2022
+[./../src/client.c : writeFile : 443]	Client: File does not exist
 ----------

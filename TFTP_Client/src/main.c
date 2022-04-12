@@ -19,7 +19,7 @@
  * 		INCLUDES
  **************************************/
 
-#include "CLIENT_UTILITY.h"
+#include "client_utility.h"
 
 
 /*******************************************************************
@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
 	if(argc != 4)
 	{
 		/* Checks if args is valid */
-		logger("Invalid number of arguments",'w',__LINE__);
+		logger("Invalid number of arguments",'w',__func__,__LINE__);
 		fprintf(stderr,"USAGE: tftp_c GET/PUT server filename\n");
 		exit(1);
 	}
@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
 	hints.ai_socktype = SOCK_DGRAM;
 	if((rv = getaddrinfo(server, SERVERPORT, &hints, &servinfo)) != 0)
 	{
-		logger("Client: getaddrinfo",'f',__LINE__);
+		logger("Client: getaddrinfo",'f',__func__,__LINE__);
 		fprintf(stderr, "CLIENT: getaddrinfo: %s\n", gai_strerror(rv));
 		return 1;
 	}
@@ -66,7 +66,7 @@ int main(int argc, char* argv[])
 	{
 		if ((sockfd = socket(res->ai_family, res->ai_socktype, res->ai_protocol)) == -1)
 		{
-			logger("Client: socket",'w',__LINE__);
+			logger("Client: socket",'w',__func__,__LINE__);
 			perror("CLIENT: socket");
 			continue;
 		}
@@ -74,7 +74,7 @@ int main(int argc, char* argv[])
 	}
 	if(res == NULL)
 	{
-		logger("Client: failed to bind",'f',__LINE__);
+		logger("Client: failed to bind",'f',__func__,__LINE__);
 		fprintf(stderr, "CLIENT: failed to bind socket\n");
 		return 2;
 	}
@@ -83,18 +83,18 @@ int main(int argc, char* argv[])
 	if(strcmp(argv[1], "GET") == 0 || strcmp(argv[1], "get") == 0)
 	{ 
 		/* Get data from the server */
-		logger("Client: requesting file from server",'i',__LINE__);
+		logger("Client: requesting file from server",'i',__func__,__LINE__);
 		readFile(sockfd,their_addr,res,file,server);
 	} 
 	else if(strcmp(argv[1], "PUT") == 0 || strcmp(argv[1], "put") == 0)
 	{	
 		/* Write data to server */	
-		logger("Client: writing file to server",'i',__LINE__);
+		logger("Client: writing file to server",'i',__func__,__LINE__);
 		writeFile(sockfd,their_addr,res,file,server);
 	} else 
 	{ 
 		/* Invalid request */
-		logger("Client: wrong input format",'w',__LINE__);
+		logger("Client: wrong input format",'w',__func__,__LINE__);
 		fprintf(stderr,"USAGE: tftp_c GET/PUT server filename\n");
 		exit(1);
 	}

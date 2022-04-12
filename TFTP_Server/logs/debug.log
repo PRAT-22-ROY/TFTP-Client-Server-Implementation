@@ -1,21 +1,291 @@
-~~Mon Apr 11 14:31:03 2022
-[./../src/server.c : 560]	Server: Read request
+~~Tue Apr 12 13:17:02 2022
+[./../src/server.c : main :115]	Server: Read request
 ----------
-~~Mon Apr 11 14:31:03 2022
-[./../src/server.c : 560]	Server: Write request
+~~Tue Apr 12 13:17:02 2022
+[./../src/server.c : readRequest :336]	Starting to send file
 ----------
-~~Mon Apr 11 14:31:03 2022
-[./../src/server.c : 560]	Server: Receiving packet data
+~~Tue Apr 12 13:17:02 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
 ----------
-~~Mon Apr 11 14:31:03 2022
-[./../src/server.c : 560]	Server: Receiving packet data
+~~Tue Apr 12 13:17:02 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
 ----------
-~~Mon Apr 11 14:31:03 2022
-[./../src/server.c : 560]	Server: Receiving packet data
+~~Tue Apr 12 13:17:02 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
 ----------
-~~Mon Apr 11 14:31:03 2022
-[./../src/server.c : 560]	Server: Receiving packet data
+~~Tue Apr 12 13:17:02 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
 ----------
-~~Mon Apr 11 14:31:03 2022
-[./../src/server.c : 560]	Server: Receiving packet data
+~~Tue Apr 12 13:17:02 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
+----------
+~~Tue Apr 12 13:17:22 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 13:17:22 2022
+[./../src/server.c : main :129]	Server: Write request
+----------
+~~Tue Apr 12 13:17:22 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 13:17:22 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 13:17:22 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 13:17:22 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 13:17:22 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 13:17:33 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 13:17:33 2022
+[./../src/server.c : readRequest :329]	Server: Sendto()
+----------
+~~Tue Apr 12 13:17:43 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 13:17:43 2022
+[./../src/server.c : main :129]	Server: Write request
+----------
+~~Tue Apr 12 13:17:43 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 13:17:56 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 13:17:56 2022
+[./../src/server.c : main :129]	Server: Write request
+----------
+~~Tue Apr 12 13:17:56 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 13:17:59 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 13:17:59 2022
+[./../src/server.c : readRequest :329]	Server: Sendto()
+----------
+~~Tue Apr 12 14:58:26 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 14:58:26 2022
+[./../src/server.c : readRequest :336]	Starting to send file
+----------
+~~Tue Apr 12 14:58:26 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
+----------
+~~Tue Apr 12 14:58:26 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
+----------
+~~Tue Apr 12 14:58:26 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
+----------
+~~Tue Apr 12 14:58:26 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
+----------
+~~Tue Apr 12 14:58:26 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
+----------
+~~Tue Apr 12 14:58:59 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 14:58:59 2022
+[./../src/server.c : main :129]	Server: Write request
+----------
+~~Tue Apr 12 14:58:59 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 14:58:59 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 14:58:59 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 14:58:59 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 14:58:59 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 14:59:22 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 14:59:22 2022
+[./../src/server.c : main :129]	Server: Write request
+----------
+~~Tue Apr 12 14:59:22 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 14:59:33 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 14:59:33 2022
+[./../src/server.c : readRequest :329]	Server: Sendto()
+----------
+~~Tue Apr 12 14:59:38 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 14:59:38 2022
+[./../src/server.c : main :129]	Server: Write request
+----------
+~~Tue Apr 12 14:59:38 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 16:05:54 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 16:05:54 2022
+[./../src/server.c : main :129]	Server: Write request
+----------
+~~Tue Apr 12 16:05:54 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 16:08:57 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 16:08:57 2022
+[./../src/server.c : main :129]	Server: Write request
+----------
+~~Tue Apr 12 16:08:57 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 16:09:56 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 16:09:56 2022
+[./../src/server.c : main :129]	Server: Write request
+----------
+~~Tue Apr 12 16:09:56 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 16:09:56 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 16:11:14 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 16:11:14 2022
+[./../src/server.c : main :129]	Server: Write request
+----------
+~~Tue Apr 12 16:11:14 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 16:11:39 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 16:11:39 2022
+[./../src/server.c : main :129]	Server: Write request
+----------
+~~Tue Apr 12 16:11:39 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 16:12:13 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 16:12:13 2022
+[./../src/server.c : main :129]	Server: Write request
+----------
+~~Tue Apr 12 16:12:13 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 16:14:02 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 16:14:02 2022
+[./../src/server.c : main :129]	Server: Write request
+----------
+~~Tue Apr 12 16:14:02 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 16:14:02 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 16:14:03 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 16:14:03 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 16:14:03 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
+----------
+~~Tue Apr 12 16:17:10 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 16:17:10 2022
+[./../src/server.c : readRequest :336]	Starting to send file
+----------
+~~Tue Apr 12 16:17:10 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
+----------
+~~Tue Apr 12 16:19:30 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 16:19:30 2022
+[./../src/server.c : readRequest :336]	Starting to send file
+----------
+~~Tue Apr 12 16:19:30 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
+----------
+~~Tue Apr 12 16:19:30 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
+----------
+~~Tue Apr 12 16:20:22 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 16:20:22 2022
+[./../src/server.c : readRequest :336]	Starting to send file
+----------
+~~Tue Apr 12 16:20:22 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
+----------
+~~Tue Apr 12 16:20:58 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 16:20:58 2022
+[./../src/server.c : readRequest :336]	Starting to send file
+----------
+~~Tue Apr 12 16:20:58 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
+----------
+~~Tue Apr 12 16:22:18 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 16:22:18 2022
+[./../src/server.c : readRequest :336]	Starting to send file
+----------
+~~Tue Apr 12 16:22:18 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
+----------
+~~Tue Apr 12 16:22:18 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
+----------
+~~Tue Apr 12 16:22:18 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
+----------
+~~Tue Apr 12 16:22:18 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
+----------
+~~Tue Apr 12 16:22:18 2022
+[./../src/server.c : readRequest :373]	Server: Maxtries
+----------
+~~Tue Apr 12 16:24:35 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 16:24:35 2022
+[./../src/server.c : readRequest :329]	Server: Sendto()
+----------
+~~Tue Apr 12 16:25:58 2022
+[./../src/server.c : main :115]	Server: Read request
+----------
+~~Tue Apr 12 16:25:58 2022
+[./../src/server.c : main :129]	Server: Write request
+----------
+~~Tue Apr 12 16:25:58 2022
+[./../src/server.c : writeRequest :431]	Server: Receiving packet data
 ----------

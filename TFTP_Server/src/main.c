@@ -19,7 +19,7 @@
 /***************************************
  * 		INCLUDES
  **************************************/
-#include "SERVER_UTILITY.h"
+#include "server_utility.h"
 
 int sockfd;
 
@@ -57,7 +57,7 @@ int main(void)
 	
 	if ((rv = getaddrinfo(NULL, MYPORT, &hints, &servinfo)) != 0) 
 	{
-		logger("Server: getaddrinfo",'f',__LINE__);
+		logger("Server: getaddrinfo",'f',__func__,__LINE__);
 		fprintf(stderr, "SERVER: getaddrinfo: %s\n", gai_strerror(rv));
 		return 1;
 	}
@@ -67,13 +67,13 @@ int main(void)
 	{
 		if ((sockfd = socket(res->ai_family, res->ai_socktype, res->ai_protocol)) == -1) 
 		{
-			logger("Server: socket",'w',__LINE__);
+			logger("Server: socket",'w',__func__,__LINE__);
 			perror("SERVER: socket");
 			continue;
 		}
 		if (bind(sockfd, res->ai_addr, res->ai_addrlen) == -1) 
 		{
-			logger("Server: socket",'w',__LINE__);
+			logger("Server: socket",'w',__func__,__LINE__);
 			close(sockfd);
 			perror("SERVER: bind");
 			continue;
@@ -82,7 +82,7 @@ int main(void)
 	}
 	if (res == NULL) 
 	{
-		logger("Server: failed to bind",'f',__LINE__);
+		logger("Server: failed to bind",'f',__func__,__LINE__);
 		fprintf(stderr, "SERVER: failed to bind socket\n");
 		return 2;
 	}
@@ -102,36 +102,36 @@ int main(void)
 		addr_len = sizeof their_addr;
 		if ((numbytes = recvfrom(sockfd, buf, MAXBUFLEN-1 , 0, (struct sockaddr *)&their_addr, &addr_len)) == -1) 
 		{
-			logger("Server: recvfrom",'f',__LINE__);
+			logger("Server: recvfrom",'f',__func__,__LINE__);
 			errorHandler(numbytes,"SERVER: recvfrom");
 		}
-		logger("Server got the packet",'i',__LINE__);
+		logger("Server got the packet",'i',__func__,__LINE__);
 		printf("SERVER: got packet from %s\n", inet_ntop(their_addr.ss_family, getAddress((struct sockaddr *)&their_addr), dst, sizeof dst));
 		printf("SERVER: packet is %d bytes long\n", numbytes);
 		buf[numbytes] = '\0';
 		printf("SERVER: packet contains \"%s\"\n", buf);
 		
 		/* Read request */
-		logger("Server: Read request",'d',__LINE__);
+		logger("Server: Read request",'d',__func__,__LINE__);
 		if(buf[0] == '0' && buf[1] == '1')
 		{
 			rv=readRequest(sockfd, buf, their_addr, addr_len, res);
 			logMessage("Server received READ REQUEST(RRQ) from %s \n",inet_ntop(their_addr.ss_family, getAddress((struct sockaddr *)&their_addr), dst, sizeof dst));
 			if(rv==EXIT_FAILURE)
 			{
-				logger("Server: Read request unsuccesful",'w',__LINE__);
+				logger("Server: Read request unsuccesful",'w',__func__,__LINE__);
 				fprintf(stderr,"READ REQUEST UNSUCCESSFUL\n");
 			}	
 		}
 		/* Write request */	
 		else if (buf[0] == '0' && buf[1] == '2')
 		{
-			logger("Server: Write request",'d',__LINE__);
+			logger("Server: Write request",'d',__func__,__LINE__);
 			rv=writeRequest(sockfd, buf, their_addr, addr_len);
 			logMessage("Server received WRITE REQUEST(WRQ) from %s \n",inet_ntop(their_addr.ss_family, getAddress((struct sockaddr *)&their_addr), dst, sizeof dst));
 			if(rv==EXIT_FAILURE)
 			{
-				logger("Server: Write request unsuccesful",'w',__LINE__);
+				logger("Server: Write request unsuccesful",'w',__func__,__LINE__);
 				fprintf(stderr,"WRITE REQUEST UNSUCCESSFUL\n");
 			}
 		} 
@@ -139,7 +139,7 @@ int main(void)
 		{
 			fprintf(stderr,"INVALID REQUEST\n");
 			logMessage("Server received an invalid request from %s \n",inet_ntop(their_addr.ss_family, getAddress((struct sockaddr *)&their_addr), dst, sizeof dst));
-			logger("Server: Invalid request",'f',__LINE__);
+			logger("Server: Invalid request",'f',__func__,__LINE__);
 		}
 	}
 	/* Main implementation ends */
