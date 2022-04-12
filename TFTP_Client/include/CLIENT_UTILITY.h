@@ -72,7 +72,7 @@
  **
  **  PARAMETERS		: char *filename  
  **
- **  RETURN 		:  void
+ **  RETURN 		:  packet
  **
  ******************************************************************/
  char* makeRRQ(char *filename);
@@ -84,7 +84,7 @@
  **
  **  PARAMETERS		: char *filename 			  
  **
- **  RETURN 		:  char*
+ **  RETURN 		:  packet
  **
  ******************************************************************/
  char* makeWRQ(char *filename);
@@ -96,7 +96,7 @@
  **
  **  PARAMETERS		: int block, char *data 			  
  **
- **  RETURN 		:  void
+ **  RETURN 		:  packet
  **
  ******************************************************************/
  char* makeDataPacket(int block, char *data);
@@ -108,7 +108,7 @@
  **
  **  PARAMETERS		: char* block			  
  **
- **  RETURN 		:  char*
+ **  RETURN 		:  packet
  **
  ******************************************************************/
  char* makeACK(char* block);
@@ -120,7 +120,7 @@
  **
  **  PARAMETERS		: char *errcode, char* errmsg 			  
  **
- **  RETURN 		: char* 
+ **  RETURN 		: packet
  **
  ******************************************************************/
  char* makeERR(char *errcode, char* errmsg);
@@ -137,52 +137,56 @@
  ******************************************************************/
  void *getAddress(struct sockaddr *sa);
  
-/*******************************************************************
+/******************************************************************************
  **  FUNCTION NAME	: checkTimeout
  **
  **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		: int sockfd, char *buf, struct sockaddr_storage *their_addr, socklen_t addr_len			  
+ **  PARAMETERS		: int sockfd, char *buf, struct sockaddr_storage *their_addr,
+                   socklen_t addr_len			  
  **
- **  RETURN 		:  int
+ **  RETURN 		:  -2 or -1 or number of bytes received
  **
- ******************************************************************/
+ ******************************************************************************/
  int checkTimeout(int sockfd, char *buf, struct sockaddr_storage *their_addr, socklen_t addr_len);
  
-/*******************************************************************
+/************************************************************************************************
  **  FUNCTION NAME	: maxTries
  **
  **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		: int sockfd,char *buf,struct sockaddr_storage *their_addr, socklen_t addr_len,struct addrinfo *res,char *last_messag 			  
+ **  PARAMETERS		: int sockfd,char *buf,struct sockaddr_storage *their_addr, socklen_t addr_len,
+                   struct addrinfo *res,char *last_messag 			  
  **
- **  RETURN 		: int 
+ **  RETURN 		: numBytes
  **
- ******************************************************************/
+ ***********************************************************************************************/
  int maxTries(int sockfd,char *buf,struct sockaddr_storage *their_addr, socklen_t addr_len,struct addrinfo *res,char *last_message);
  
-/*******************************************************************
+/**************************************************************************************
  **  FUNCTION NAME	: readFile
  **
  **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		: int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res, char *file,char *server  			  
+ **  PARAMETERS		: int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,
+                   char *file,char *server  			  
  **
- **  RETURN 		:  int
+ **  RETURN 		:  EXIT_SUCCESS
  **
- ******************************************************************/
+ **************************************************************************************/
  int readFile(int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res, char *file,char *server);
  
-/*******************************************************************
+/**************************************************************************************
  **  FUNCTION NAME	: writeFile 
  **
  **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		: int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,char *file,char *server 			  
+ **  PARAMETERS		: int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,
+                   char *file,char *server 			  
  **
- **  RETURN 		: int 
+ **  RETURN 		: EXIT_SUCCESS
  **
- ******************************************************************/
+ ***************************************************************************************/
  int writeFile(int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,char *file,char *server);
  
 /*******************************************************************
@@ -202,9 +206,10 @@
  **
  **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		: char* message, char logType,const char *funcName,int lineNo  			  
+ **  PARAMETERS		: char* message, char logType,const char *funcName,
+                   int lineNo  			  
  **
- **  RETURN 		: int  
+ **  RETURN 		: EXIT_SUCCESS 
  **
  ******************************************************************/
  int logger(char* message, char logType,const char *funcName,int lineNo);
