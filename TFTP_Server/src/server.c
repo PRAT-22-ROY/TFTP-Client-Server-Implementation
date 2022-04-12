@@ -152,7 +152,7 @@ void logMessage(const char *format,...)
 }
 
 /*******************************************************************
- **  FUNCTION NAME	: getAddress
+ **  FUNCTION NAME	: logOpen
  **
  **  DESCRIPTION	: Opening the log file
  **
@@ -196,7 +196,7 @@ void logClose(void)
 /*******************************************************************
  **  FUNCTION NAME	: getAddress
  **
- **  DESCRIPTION	: to typecast an unspecific address into IPv4 or IPv6
+ **  DESCRIPTION	: it typecasts an unspecific address into IPv4 or IPv6
  **
  **  PARAMETERS		: struct sockaddr *sa
  **
