@@ -2,14 +2,14 @@
 /**********************************************************************************************
  **  FILENAME	      : main.c	
  **
- **  DESCRIPTION      : 
+ **  DESCRIPTION      : Entry point to the server program
  ** 
  **
  **  REVISION HISTORY :
  **  
  **  DATE	    NAME	      REFERENCE	                REASON
  **  ------------------------------------------------------------------------------------
- **  04 April 2022    
+ **  12 April 2022   Sprint_Group_5	TFTP_01,TFTP_02	    Sprint Assessment 
  **
  **
  **  Copyright @ 2022 Capgemini Engineering All Rights Reserved
@@ -26,16 +26,17 @@ int sockfd;
 
 static char *LOGFILE = "../logs/request.log";
 
-/*******************************************************************
+/*********************************************************************************
  **  FUNCTION NAME	: main 
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Performs server configuration and calls 
+ **			  readRequest or writeRequest based on the client request.
  **
- **  PARAMETERS		: 
+ **  PARAMETERS		: void
  **
- **  RETURN 		: 
+ **  RETURN 		: 0
  **
- ******************************************************************/
+ *********************************************************************************/
 
 int main(void)
 {
