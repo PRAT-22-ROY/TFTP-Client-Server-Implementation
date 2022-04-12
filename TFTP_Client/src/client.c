@@ -276,16 +276,17 @@ void *getAddress(struct sockaddr *sa){
  }
  
 
-/*******************************************************************
+/*********************************************************************************************
  **  FUNCTION NAME	: readFile
  **
  **  DESCRIPTION	: Function to read file from server
  **
- **  PARAMETERS	        : int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res, char *file,char *server
+ **  PARAMETERS	        : int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,
+                          char *file,char *server
  **
  **  RETURN 		: EXIT_SUCCESS
  **
- ******************************************************************/
+ **********************************************************************************************/
  
  int readFile(int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res, char *file,char *server)
 {
@@ -395,16 +396,17 @@ void *getAddress(struct sockaddr *sa){
 }
 
 	
-/*******************************************************************
+/**********************************************************************************************
  **  FUNCTION NAME	: writeFile
  **
  **  DESCRIPTION	: Function to write file to server
  **
- **  PARAMETERS		: int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,char *file,char *server
+ **  PARAMETERS		: int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,
+                          char *file,char *server
  **
  **  RETURN 		: EXIT_SUCCESS
  **
- ******************************************************************/
+ **********************************************************************************************/
  
  int writeFile(int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res, char *file,char *server)
 {
