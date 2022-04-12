@@ -8,7 +8,7 @@
  **  
  **  DATE	    NAME		   REFERENCE	    REASON
  **  ------------------------------------------------------------------------------------
- **  29 Mar 2022    
+ **  12 Mar 2022  Sprint_Group_5  TFTP_SRS  Sprint Assessment   
  **
  **
  **  Copyright @ 2022 Capgemini Engineering All Rights Reserved
@@ -59,11 +59,11 @@
 /*******************************************************************
  **  FUNCTION NAME	: logOpen 
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS	:  
+ **  PARAMETERS	:  const char *logFileName
  **
- **  RETURN 		: 
+ **  RETURN 		: void
  **
  ******************************************************************/
 void logOpen(const char *logFileName);
@@ -71,11 +71,11 @@ void logOpen(const char *logFileName);
 /*******************************************************************
  **  FUNCTION NAME	: logClose
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		:  
+ **  PARAMETERS		:  None
  **
- **  RETURN 		: 
+ **  RETURN 		: void
  **
  ******************************************************************/
 void logClose(void);
@@ -83,7 +83,7 @@ void logClose(void);
 /*******************************************************************
  **  FUNCTION NAME	: logMessage
  **
- **  DESCRIPTION	: Maintaining logs of all requests from client
+ **  DESCRIPTION	: Function Prototype
  **
  **  PARAMETERS	: const char *format, ....
  **
@@ -107,7 +107,7 @@ void numberToString(char *str, int num);
 /*******************************************************************
  **  FUNCTION NAME	: makeDataPacket
  **
- **  DESCRIPTION	: Makes data packet
+ **  DESCRIPTION	: Function prototype
  **
  **  PARAMETERS	: int block, char *data
  **
@@ -119,7 +119,7 @@ char* makeDataPacket(int block, char *data);
 /*******************************************************************
  **  FUNCTION NAME	: makeACK
  **
- **  DESCRIPTION	: Makes acknowledgement packet
+ **  DESCRIPTION	: Function prototype
  **
  **  PARAMETERS	: char* block
  **
@@ -131,7 +131,7 @@ char* makeACK(char* block);
 /*******************************************************************
  **  FUNCTION NAME	: makeERR
  **
- **  DESCRIPTION	: Makes error packet 
+ **  DESCRIPTION	: Function prototype 
  **
  **  PARAMETERS		: char *errcode, char* errmsg
  **
@@ -140,73 +140,75 @@ char* makeACK(char* block);
  ******************************************************************/
 char* makeERR(char *errcode, char* errmsg);
 
-/*******************************************************************
+/*****************************************************************************
  **  FUNCTION NAME	: checkTimeout
  **
- **  DESCRIPTION	: Checks for the timeout condition
+ **  DESCRIPTION	: Function prototype
  **
- **  PARAMETERS	:  
+ **  PARAMETERS	:  int sockfd, char *buf, struct sockaddr_storage their_addr, 
+                   socklen_t addr_len
  **
- **  RETURN 		: 
+ **  RETURN 		: -2 or -1 or number of bytes received
  **
- ******************************************************************/
+ *****************************************************************************/
 int checkTimeout(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len);
 
-/*******************************************************************
+/***************************************************************************
  **  FUNCTION NAME	: maxTries
  **
- **  DESCRIPTION	: The maximum number of tries the host will
- 			  try to send the packet to the other host
+ **  DESCRIPTION	: Function prototype
  **
- **  PARAMETERS		:  
+ **  PARAMETERS		: int sockfd, char *buf, struct sockaddr_storage their_addr, 
+                   socklen_t addr_len, struct addrinfo *res, char *t_msg 
  **
  **  RETURN 		: numbytes
  **
- ******************************************************************/
+ ***************************************************************************/
 int maxTries(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len, struct addrinfo *res, char *t_msg);
  
 /*******************************************************************
  **  FUNCTION NAME	: getAddress
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: Function prototype
  **
- **  PARAMETERS	:  
+ **  PARAMETERS	:  struct sockaddr *sa
  **
  **  RETURN 		: void
  **
  ******************************************************************/
 void *getAddress(struct sockaddr *sa);
  
-/*******************************************************************
+/****************************************************************************
  **  FUNCTION NAME	: readRequest
  **
- **  DESCRIPTION	: Server upon receiving read request
+ **  DESCRIPTION	: Function prototype
  **
- **  PARAMETERS	:  
+ **  PARAMETERS	:  int sockfd, char *buf, struct sockaddr_storage their_addr, 
+                   socklen_t addr_len, struct addrinfo *res
  **
- **  RETURN 		: 
+ **  RETURN 		: EXIT_SUCCESS or EXIT_FAILURE
  **
- ******************************************************************/
+ *****************************************************************************/
 int readRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len, struct addrinfo *res);
 
-/*******************************************************************
+/***************************************************************************
  **  FUNCTION NAME	: writeRequest
  **
- **  DESCRIPTION	: Server gets a write request with the 
- 			  filename
+ **  DESCRIPTION	: Function prototype
  **
- **  PARAMETERS	:  
+ **  PARAMETERS	: int sockfd, char *buf, struct sockaddr_storage their_addr,
+                  socklen_t addr_len 
  			  
  **
- **  RETURN 		: 
+ **  RETURN 		: EXIT_SUCCESS or EXIT_FAILURE
  **
- ******************************************************************/
+ ***************************************************************************/
 int writeRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_t addr_len);
 
 /*******************************************************************
  **  FUNCTION NAME	: errorHandler
  **
- **  DESCRIPTION	: Handles the error
+ **  DESCRIPTION	: Function prototype
  **
  **  PARAMETERS	:  int ret, const char *mesg
  **
@@ -217,7 +219,7 @@ void errorHandler(int ret, const char *errMesg);
 /******************************************************************************
  **  FUNCTION NAME	: signalHandler 
  **
- **  DESCRIPTION	: Handles CTRL+c signal and stops the server program
+ **  DESCRIPTION	: Function prototype
  **
  **  PARAMETERS	: sig
  **
@@ -229,8 +231,7 @@ void signalHandler(int sig);
 /*******************************************************************
  **  FUNCTION NAME	: logger
  **
- **  DESCRIPTION	: Used for debug log messages using 
- 			  4 levels 
+ **  DESCRIPTION	: Function prototype 
  **
  **  PARAMETERS	:  char* message, char logType
  			  
