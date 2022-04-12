@@ -1,14 +1,14 @@
 /**********************************************************************************************
  **  FILENAME	      : main.c	
  **
- **  DESCRIPTION      : 
+ **  DESCRIPTION      : entry point to the client program. 
  ** 
  **
  **  REVISION HISTORY :
  **  
  **  DATE	    NAME	      REFERENCE	                REASON
  **  ------------------------------------------------------------------------------------
- **  04 April 2022    
+ **  04 April 2022    Sprint_Group_5    TFTP_01,TFTP01      Sprint Assessment
  **
  **
  **  Copyright @ 2022 Capgemini Engineering All Rights Reserved
@@ -25,11 +25,11 @@
 /*******************************************************************
  **  FUNCTION NAME	: main
  **
- **  DESCRIPTION	: 
+ **  DESCRIPTION	: performs client configuration and calls readFile or writeFile based on the users input.
  **
  **  PARAMETERS		: int argc, char *argv[]
  **
- **  RETURN 		: 
+ **  RETURN 		: returns 0
  **
  ******************************************************************/
 int main(int argc, char* argv[])
