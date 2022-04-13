@@ -2,7 +2,8 @@
 /**********************************************************************************************
  **  FILENAME	      : main.c	
  **
- **  DESCRIPTION      : Entry point to the server program
+ **  DESCRIPTION      : In this file we set up the server configuration and handle all the requests
+ **			 received from client
  ** 
  **
  **  REVISION HISTORY :
@@ -21,20 +22,20 @@
  **************************************/
 #include "server_utility.h"
 
-int sockfd;
+int sockfd;   //socket descriptor
 
 
-static char *LOGFILE = "../logs/request.log";
+static char *LOGFILE = "../logs/request.log";    //file to store the information about client requests
 
 /*********************************************************************************
  **  FUNCTION NAME	: main 
  **
- **  DESCRIPTION	: Performs server configuration and calls 
+ **  DESCRIPTION	: Function to set up server configuration and calls 
  **			  readRequest or writeRequest based on the client request.
  **
- **  PARAMETERS		: void
+ **  PARAMETERS	: void
  **
- **  RETURN 		: 0
+ **  RETURN 		: EXIT_SUCCESS
  **
  *********************************************************************************/
 
@@ -144,16 +145,17 @@ int main(void)
 		}
 	}
 	/* Main implementation ends */
-	return 0;
+	return EXIT_SUCCESS;
 }
 
 
 /******************************************************************************
  **  FUNCTION NAME	: signalHandler 
  **
- **  DESCRIPTION	: Handles CTRL+c signal and stops the server program
- **
- **  PARAMETERS		: sig
+ **  DESCRIPTION	: Handles CTRL+c signal and stops the server program.It closes
+ **			  server socket and request log file before exiting from the 
+ **		          program
+ **  PARAMETERS	: sig
  **
  **  RETURN 		: void
  **

@@ -2,7 +2,7 @@
 
  *     FILENAME           :    testServer.c
  *
- *     DESCRIPTION        :    Sprint-1  
+ *     DESCRIPTION        :    File to perform CUnit unit test on the functions present in server.c program
  
  				
  *
@@ -10,9 +10,9 @@
  *
  *     DATE                GROUP MEMBERS              REFERENCE               REASON
  *     --------------------------------------------------------------------------------------------------
- *                                     Sprint1-implementation
-                          
-				
+ *    12th April 2022       Sprint Group-5              TFTP               Sprint-implementation
+ *                         
+ *				
  *
  
  *     Copyright Â© 2022 Capgemini Group  All Rights Reserved
@@ -48,7 +48,7 @@ void testMakeACK(void)
 /******************************************************
 **FUNCTION NAME : testMakeData
 **
-**DESCRIPTION : Function to test makeData function
+**DESCRIPTION : Function to test makeDataPacket function
 **
 **RETURNS : NA
 **
@@ -66,7 +66,7 @@ void testMakeData(void)
 /******************************************************
 **FUNCTION NAME : testMakeERR
 **
-**DESCRIPTION : Function to test makeTest function
+**DESCRIPTION : Function to test makeERR function
 **
 **RETURNS : NA
 **

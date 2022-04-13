@@ -2,7 +2,7 @@
 
  *     FILENAME           :    testMain.c
  *
- *     DESCRIPTION        :    Sprint-1 : 
+ *     DESCRIPTION        :    File to perform CUnit unit test on the functions present in client.c program
  *
  *
  *
@@ -10,9 +10,9 @@
  *
  *     DATE                GROUP MEMBERS              REFERENCE               REASON
  *     --------------------------------------------------------------------------------------------------
- *                                              Sprint1-implementation
-                          
-				
+ *    12th April 2022       Sprint Group-5              TFTP               Sprint-implementation
+ *                          
+ *				
  *
  
  *     Copyright Â© 2022 Capgemini Group  All Rights Reserved
@@ -31,10 +31,15 @@
 
 static FILE* temp_file = NULL;
 
-/* The suite initialization function.
- * Opens the temporary file used by the tests.
- * Returns zero on success, non-zero otherwise.
- */
+/******************************************************
+** FUNCTION NAME : init_suite1
+**
+** DESCRIPTION : The suite initialization function.
+**              Opens the temporary file used by the tests.
+**
+** RETURNS : Returns zero on success, non-zero otherwise.
+**
+*********************************************************/
 int init_suite1(void)
 {
 	   if (NULL == (temp_file = fopen("temp.txt", "w+"))) {
@@ -45,10 +50,16 @@ int init_suite1(void)
 	   }
 }
 
-/* The suite cleanup function.
- * Closes the temporary file used by the tests.
- * Returns zero on success, non-zero otherwise.
- */
+/******************************************************
+** FUNCTION NAME : clean_suite1
+**
+** DESCRIPTION : The suite cleanup function.
+**               Closes the temporary file used by the tests.
+**             
+**
+** RETURNS : Returns zero on success, non-zero otherwise.
+**
+*********************************************************/
 int clean_suite1(void)
 {
 	   if (0 != fclose(temp_file)) {
@@ -60,6 +71,15 @@ int clean_suite1(void)
 	   }
 }
 
+/******************************************************
+** FUNCTION NAME : main
+**
+** DESCRIPTION : Intializes and registers all testing functions.
+**               in CUnit registry  
+**             
+** RETURNS : Returns zero on success, non-zero otherwise.
+**
+*********************************************************/
 int main()
 {
 	   CU_pSuite pSuite = NULL;

@@ -301,3 +301,114 @@
 ~~Tue Apr 12 16:25:58 2022
 [./../src/server.c : writeRequest : 437]	Server got packet from
 ----------
+~~Wed Apr 13 11:06:19 2022
+[./../src/server.c : main : 110]	Server got the packet
+----------
+~~Wed Apr 13 11:06:19 2022
+[./../src/server.c : writeRequest : 446]	Server got packet from
+----------
+~~Wed Apr 13 11:06:19 2022
+[./../src/server.c : writeRequest : 519]	Server sent to client
+----------
+~~Wed Apr 13 11:06:19 2022
+[./../src/server.c : writeRequest : 525]	Server: New file made
+----------
+~~Wed Apr 13 11:06:56 2022
+[./../src/server.c : main : 110]	Server got the packet
+----------
+~~Wed Apr 13 11:06:56 2022
+[./../src/server.c : writeRequest : 446]	Server got packet from
+----------
+~~Wed Apr 13 11:06:56 2022
+[./../src/server.c : writeRequest : 519]	Server sent to client
+----------
+~~Wed Apr 13 11:06:56 2022
+[./../src/server.c : writeRequest : 446]	Server got packet from
+----------
+~~Wed Apr 13 11:06:56 2022
+[./../src/server.c : writeRequest : 519]	Server sent to client
+----------
+~~Wed Apr 13 11:06:56 2022
+[./../src/server.c : writeRequest : 446]	Server got packet from
+----------
+~~Wed Apr 13 11:06:56 2022
+[./../src/server.c : writeRequest : 519]	Server sent to client
+----------
+~~Wed Apr 13 11:06:56 2022
+[./../src/server.c : writeRequest : 446]	Server got packet from
+----------
+~~Wed Apr 13 11:06:56 2022
+[./../src/server.c : writeRequest : 519]	Server sent to client
+----------
+~~Wed Apr 13 11:06:56 2022
+[./../src/server.c : writeRequest : 446]	Server got packet from
+----------
+~~Wed Apr 13 11:06:56 2022
+[./../src/server.c : writeRequest : 519]	Server sent to client
+----------
+~~Wed Apr 13 11:06:56 2022
+[./../src/server.c : writeRequest : 525]	Server: New file made
+----------
+~~Wed Apr 13 11:07:12 2022
+[./../src/server.c : main : 110]	Server got the packet
+----------
+~~Wed Apr 13 11:07:12 2022
+[./../src/server.c : writeRequest : 446]	Server got packet from
+----------
+~~Wed Apr 13 11:07:12 2022
+[./../src/server.c : writeRequest : 519]	Server sent to client
+----------
+~~Wed Apr 13 11:07:12 2022
+[./../src/server.c : writeRequest : 525]	Server: New file made
+----------
+~~Wed Apr 13 11:07:41 2022
+[./../src/server.c : main : 110]	Server got the packet
+----------
+~~Wed Apr 13 11:07:41 2022
+[./../src/server.c : readRequest : 389]	Server: Got packet from client
+----------
+~~Wed Apr 13 11:08:00 2022
+[./../src/server.c : main : 110]	Server got the packet
+----------
+~~Wed Apr 13 11:08:00 2022
+[./../src/server.c : readRequest : 389]	Server: Got packet from client
+----------
+~~Wed Apr 13 11:08:00 2022
+[./../src/server.c : readRequest : 389]	Server: Got packet from client
+----------
+~~Wed Apr 13 11:08:00 2022
+[./../src/server.c : readRequest : 389]	Server: Got packet from client
+----------
+~~Wed Apr 13 11:08:00 2022
+[./../src/server.c : readRequest : 389]	Server: Got packet from client
+----------
+~~Wed Apr 13 11:08:00 2022
+[./../src/server.c : readRequest : 389]	Server: Got packet from client
+----------
+~~Wed Apr 13 11:08:20 2022
+[./../src/server.c : main : 110]	Server got the packet
+----------
+~~Wed Apr 13 11:08:20 2022
+[./../src/server.c : readRequest : 389]	Server: Got packet from client
+----------
+~~Wed Apr 13 11:08:40 2022
+[./../src/server.c : main : 110]	Server got the packet
+----------
+~~Wed Apr 13 11:08:48 2022
+[./../src/server.c : main : 110]	Server got the packet
+----------
+~~Wed Apr 13 11:08:48 2022
+[./../src/server.c : writeRequest : 446]	Server got packet from
+----------
+~~Wed Apr 13 11:08:54 2022
+[./../src/server.c : main : 110]	Server got the packet
+----------
+~~Wed Apr 13 11:08:54 2022
+[./../src/server.c : writeRequest : 446]	Server got packet from
+----------
+~~Wed Apr 13 11:09:07 2022
+[./../src/server.c : main : 110]	Server got the packet
+----------
+~~Wed Apr 13 11:09:07 2022
+[./../src/server.c : readRequest : 389]	Server: Got packet from client
+----------

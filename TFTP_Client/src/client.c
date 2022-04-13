@@ -1,14 +1,14 @@
 /**********************************************************************************************
  **  FILENAME	      : client.c	
  **
- **  DESCRIPTION      : Client Program
- ** 
+ **  DESCRIPTION      : TFTP Client Program to send request to server to perform either of  
+ ** 			 file read or write operations 
  **
  **  REVISION HISTORY :
  **  
  **  DATE	    NAME	      REFERENCE	                REASON
  **  ------------------------------------------------------------------------------------
- **  12 April 2022    Sprint_Group_5     TFTP_SRS            Sprint Assessment     
+ **  12 April 2022    Sprint_Group_5     TFTP                  Sprint Assessment     
  **  
  **
  **  Copyright @ 2022 Capgemini Engineering All Rights Reserved
@@ -23,9 +23,9 @@
 /*******************************************************************
  **  FUNCTION NAME	: numberToString
  **
- **  DESCRIPTION	: It converts block number to length-2 string
+ **  DESCRIPTION	: It converts block number to string of lenght two
  **
- **  PARAMETERS		: char *temp, int num 
+ **  PARAMETERS	: char *temp, int num 
  **
  **  RETURN 		: void
  **
@@ -55,9 +55,9 @@ void numberToString(char *temp, int num)
 /*******************************************************************
  **  FUNCTION NAME	: makeRRQ
  **
- **  DESCRIPTION	: It makes RRQ packet
+ **  DESCRIPTION	: It makes packet for read request
  **
- **  PARAMETERS		: char *filename
+ **  PARAMETERS	: char *filename
  **
  **  RETURN 		: packet  
  **
@@ -75,9 +75,9 @@ char* makeRRQ(char *filename){
 /*******************************************************************
  **  FUNCTION NAME	: makeWRQ
  **
- **  DESCRIPTION	: It  makes WRQ packet
+ **  DESCRIPTION	: It  makes packet for write request
  **
- **  PARAMETERS		: char *filename 
+ **  PARAMETERS	: char *filename 
  **
  **  RETURN 		: packet
  **
@@ -98,7 +98,7 @@ char* makeWRQ(char *filename)
  **
  **  DESCRIPTION	: It  makes data packet
  **
- **  PARAMETERS		: int block, char *data 
+ **  PARAMETERS	: int block, char *data 
  **
  **  RETURN 		: packet
  **
@@ -122,7 +122,7 @@ char* makeDataPacket(int block, char *data)
  **
  **  DESCRIPTION	: It  makes ACK packet
  **
- **  PARAMETERS		: char *block
+ **  PARAMETERS	: char *block
  **
  **  RETURN 		: packet
  **
@@ -141,7 +141,7 @@ char* makeACK(char* block)
  **
  **  DESCRIPTION	: It  makes ERR packet
  **
- **  PARAMETERS		: char *errcode, char *errmsg
+ **  PARAMETERS	: char *errcode, char *errmsg
  **
  **  RETURN 		: packet
  **
@@ -163,7 +163,7 @@ char* makeERR(char *errcode, char* errmsg)
  **
  **  DESCRIPTION	: it typecasts an unspecific address into IPv4 or IPv6
  **
- **  PARAMETERS		: struct sockaddr *sa 
+ **  PARAMETERS	: struct sockaddr *sa 
  **
  **  RETURN 		: void
  **
@@ -181,8 +181,8 @@ void *getAddress(struct sockaddr *sa){
  **
  **  DESCRIPTION	: Checks for timeout
  **
- **  PARAMETERS		: int sockfd, char *buf, struct sockaddr_storage *their_addr,
-                          socklen_t addr_len
+ **  PARAMETERS	: int sockfd, char *buf, struct sockaddr_storage *their_addr,
+                         socklen_t addr_len
  **
  **  RETURN 		: -2 or -1 or number of bytes received
  **
@@ -220,9 +220,10 @@ void *getAddress(struct sockaddr *sa){
 /***********************************************************************************
  **  FUNCTION NAME	: maxTries
  **
- **  DESCRIPTION	: Function to write file to server
+ **  DESCRIPTION	: The maximum number of tries the host will
+ **			  try to send the packet to the other host
  **
- **  PARAMETERS		: int sockfd,char *buf,struct sockaddr_storage *their_addr,
+ **  PARAMETERS	: int sockfd,char *buf,struct sockaddr_storage *their_addr,
                           socklen_t addr_len,struct addrinfo *res,char *last_message
  **
  **  RETURN 		: numBytes
@@ -281,7 +282,7 @@ void *getAddress(struct sockaddr *sa){
  **
  **  DESCRIPTION	: Function to read file from server
  **
- **  PARAMETERS	        : int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,
+ **  PARAMETERS	: int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,
                           char *file,char *server
  **
  **  RETURN 		: EXIT_SUCCESS
@@ -401,7 +402,7 @@ void *getAddress(struct sockaddr *sa){
  **
  **  DESCRIPTION	: Function to write file to server
  **
- **  PARAMETERS		: int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,
+ **  PARAMETERS	: int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,
                           char *file,char *server
  **
  **  RETURN 		: EXIT_SUCCESS
@@ -483,7 +484,6 @@ void *getAddress(struct sockaddr *sa){
 			{
 				logger("Client: sendto",'f',__func__,__LINE__);
 				errorHandler(numbytes,"CLIENT: sendto");
-				//exit(1);
 			}
 			printf("CLIENT: sent %d bytes to %s\n", numbytes, server);
 			logger("Client: sent bytes to server",'i',__func__,__LINE__);
@@ -528,10 +528,10 @@ void *getAddress(struct sockaddr *sa){
 /*******************************************************************
  **  FUNCTION NAME	: logger
  **
- **  DESCRIPTION	: Used for debug log messages using 
- 			  4 levels 
+ **  DESCRIPTION	: Used to store 4 types of log messages to their  
+ ** 			  respective files
  **
- **  PARAMETERS		: char* message, char logType
+ **  PARAMETERS	: char* message, char logType
  **
  **  RETURN 		: EXIT_SUCCESS
  **
@@ -583,9 +583,10 @@ int logger(char* message, char logType,const char *funcName,int lineNo)
 /*******************************************************************
  **  FUNCTION NAME	: errorHandler
  **
- **  DESCRIPTION	: Handles the error
- **
- **  PARAMETERS		: int ret, const char *mesg
+ **  DESCRIPTION	: Handles the error occured due to failure of 
+ ** 			  system call or library function 
+ **			  
+ **  PARAMETERS	: int ret, const char *mesg
  **
  **  RETURN 		: void
  **

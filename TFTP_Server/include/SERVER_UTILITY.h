@@ -1,14 +1,14 @@
 /**********************************************************************************************
- **  FILENAME	      : SERVER_UTILITY.h	
+ **  FILENAME	      : server_utility.h	
  **
- **  DESCRIPTION      : This file defines macros and header files for source.c 
+ **  DESCRIPTION      : This file defines macros and header files for server.c and main.c
  ** 
  **
  **  REVISION HISTORY :
  **  
  **  DATE	    NAME		   REFERENCE	    REASON
  **  ------------------------------------------------------------------------------------
- **  12 Mar 2022  Sprint_Group_5  TFTP_SRS  Sprint Assessment   
+ **  12 Mar 2022  Sprint_Group_5           TFTP        Sprint Assessment   
  **
  **
  **  Copyright @ 2022 Capgemini Engineering All Rights Reserved
@@ -59,9 +59,9 @@
 /*******************************************************************
  **  FUNCTION NAME	: logOpen 
  **
- **  DESCRIPTION	: Function Prototype
+ **  DESCRIPTION	: Function prototype
  **
- **  PARAMETERS	:  const char *logFileName
+ **  PARAMETERS	: const char *logFileName
  **
  **  RETURN 		: void
  **
@@ -71,9 +71,9 @@ void logOpen(const char *logFileName);
 /*******************************************************************
  **  FUNCTION NAME	: logClose
  **
- **  DESCRIPTION	: Function Prototype
+ **  DESCRIPTION	: Function prototype
  **
- **  PARAMETERS		:  None
+ **  PARAMETERS	:  None
  **
  **  RETURN 		: void
  **
@@ -83,7 +83,7 @@ void logClose(void);
 /*******************************************************************
  **  FUNCTION NAME	: logMessage
  **
- **  DESCRIPTION	: Function Prototype
+ **  DESCRIPTION	: Function prototype
  **
  **  PARAMETERS	: const char *format, ....
  **
@@ -95,7 +95,7 @@ void logMessage(const char *format,...);
 /*******************************************************************
  **  FUNCTION NAME	: numberToString
  **
- **  DESCRIPTION	: Converts block number to string of length 2
+ **  DESCRIPTION	: Function prototype
  **
  **  PARAMETERS	: char *temp, int num
  **
@@ -133,7 +133,7 @@ char* makeACK(char* block);
  **
  **  DESCRIPTION	: Function prototype 
  **
- **  PARAMETERS		: char *errcode, char* errmsg
+ **  PARAMETERS	: char *errcode, char* errmsg
  **
  **  RETURN 		: packet
  **
@@ -146,7 +146,7 @@ char* makeERR(char *errcode, char* errmsg);
  **  DESCRIPTION	: Function prototype
  **
  **  PARAMETERS	:  int sockfd, char *buf, struct sockaddr_storage their_addr, 
-                   socklen_t addr_len
+                          socklen_t addr_len
  **
  **  RETURN 		: -2 or -1 or number of bytes received
  **
@@ -158,8 +158,8 @@ int checkTimeout(int sockfd, char *buf, struct sockaddr_storage their_addr, sock
  **
  **  DESCRIPTION	: Function prototype
  **
- **  PARAMETERS		: int sockfd, char *buf, struct sockaddr_storage their_addr, 
-                   socklen_t addr_len, struct addrinfo *res, char *t_msg 
+ **  PARAMETERS	: int sockfd, char *buf, struct sockaddr_storage their_addr, 
+                         socklen_t addr_len, struct addrinfo *res, char *t_msg 
  **
  **  RETURN 		: numbytes
  **
@@ -171,7 +171,7 @@ int maxTries(int sockfd, char *buf, struct sockaddr_storage their_addr, socklen_
  **
  **  DESCRIPTION	: Function prototype
  **
- **  PARAMETERS	:  struct sockaddr *sa
+ **  PARAMETERS	: struct sockaddr *sa
  **
  **  RETURN 		: void
  **
@@ -184,7 +184,7 @@ void *getAddress(struct sockaddr *sa);
  **  DESCRIPTION	: Function prototype
  **
  **  PARAMETERS	:  int sockfd, char *buf, struct sockaddr_storage their_addr, 
-                   socklen_t addr_len, struct addrinfo *res
+                          socklen_t addr_len, struct addrinfo *res
  **
  **  RETURN 		: EXIT_SUCCESS or EXIT_FAILURE
  **
@@ -197,7 +197,7 @@ int readRequest(int sockfd, char *buf, struct sockaddr_storage their_addr, sockl
  **  DESCRIPTION	: Function prototype
  **
  **  PARAMETERS	: int sockfd, char *buf, struct sockaddr_storage their_addr,
-                  socklen_t addr_len 
+                         socklen_t addr_len 
  			  
  **
  **  RETURN 		: EXIT_SUCCESS or EXIT_FAILURE
@@ -221,7 +221,7 @@ void errorHandler(int ret, const char *errMesg);
  **
  **  DESCRIPTION	: Function prototype
  **
- **  PARAMETERS	: sig
+ **  PARAMETERS	: int sig
  **
  **  RETURN 		: void
  **

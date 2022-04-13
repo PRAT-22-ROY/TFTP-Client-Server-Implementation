@@ -606,3 +606,227 @@
 ~~Tue Apr 12 16:25:58 2022
 [./../src/client.c : maxTries :244]	Client: Timeout check
 ----------
+
+~~Wed Apr 13 11:06:19 2022
+[./../src/client.c : writeFile :431]	Client: Max tries function call
+----------
+
+~~Wed Apr 13 11:06:19 2022
+[./../src/client.c : maxTries :234]	Max tries function
+----------
+
+~~Wed Apr 13 11:06:19 2022
+[./../src/client.c : maxTries :247]	Client: Timeout check
+----------
+
+~~Wed Apr 13 11:06:19 2022
+[./../src/client.c : writeFile :452]	Calculating the size of file
+----------
+
+~~Wed Apr 13 11:06:19 2022
+[./../src/client.c : writeFile :481]	Sending file data packet
+----------
+
+~~Wed Apr 13 11:06:19 2022
+[./../src/client.c : maxTries :234]	Max tries function
+----------
+
+~~Wed Apr 13 11:06:19 2022
+[./../src/client.c : maxTries :247]	Client: Timeout check
+----------
+
+~~Wed Apr 13 11:06:56 2022
+[./../src/client.c : writeFile :431]	Client: Max tries function call
+----------
+
+~~Wed Apr 13 11:06:56 2022
+[./../src/client.c : maxTries :234]	Max tries function
+----------
+
+~~Wed Apr 13 11:06:56 2022
+[./../src/client.c : maxTries :247]	Client: Timeout check
+----------
+
+~~Wed Apr 13 11:06:56 2022
+[./../src/client.c : writeFile :452]	Calculating the size of file
+----------
+
+~~Wed Apr 13 11:06:56 2022
+[./../src/client.c : writeFile :481]	Sending file data packet
+----------
+
+~~Wed Apr 13 11:06:56 2022
+[./../src/client.c : maxTries :234]	Max tries function
+----------
+
+~~Wed Apr 13 11:06:56 2022
+[./../src/client.c : maxTries :247]	Client: Timeout check
+----------
+
+~~Wed Apr 13 11:06:56 2022
+[./../src/client.c : writeFile :481]	Sending file data packet
+----------
+
+~~Wed Apr 13 11:06:56 2022
+[./../src/client.c : maxTries :234]	Max tries function
+----------
+
+~~Wed Apr 13 11:06:56 2022
+[./../src/client.c : maxTries :247]	Client: Timeout check
+----------
+
+~~Wed Apr 13 11:06:56 2022
+[./../src/client.c : writeFile :481]	Sending file data packet
+----------
+
+~~Wed Apr 13 11:06:56 2022
+[./../src/client.c : maxTries :234]	Max tries function
+----------
+
+~~Wed Apr 13 11:06:56 2022
+[./../src/client.c : maxTries :247]	Client: Timeout check
+----------
+
+~~Wed Apr 13 11:06:56 2022
+[./../src/client.c : writeFile :481]	Sending file data packet
+----------
+
+~~Wed Apr 13 11:06:56 2022
+[./../src/client.c : maxTries :234]	Max tries function
+----------
+
+~~Wed Apr 13 11:06:56 2022
+[./../src/client.c : maxTries :247]	Client: Timeout check
+----------
+
+~~Wed Apr 13 11:06:56 2022
+[./../src/client.c : writeFile :481]	Sending file data packet
+----------
+
+~~Wed Apr 13 11:06:56 2022
+[./../src/client.c : maxTries :234]	Max tries function
+----------
+
+~~Wed Apr 13 11:06:56 2022
+[./../src/client.c : maxTries :247]	Client: Timeout check
+----------
+
+~~Wed Apr 13 11:07:12 2022
+[./../src/client.c : writeFile :431]	Client: Max tries function call
+----------
+
+~~Wed Apr 13 11:07:12 2022
+[./../src/client.c : maxTries :234]	Max tries function
+----------
+
+~~Wed Apr 13 11:07:12 2022
+[./../src/client.c : maxTries :247]	Client: Timeout check
+----------
+
+~~Wed Apr 13 11:07:12 2022
+[./../src/client.c : writeFile :452]	Calculating the size of file
+----------
+
+~~Wed Apr 13 11:07:12 2022
+[./../src/client.c : writeFile :481]	Sending file data packet
+----------
+
+~~Wed Apr 13 11:07:12 2022
+[./../src/client.c : maxTries :234]	Max tries function
+----------
+
+~~Wed Apr 13 11:07:12 2022
+[./../src/client.c : maxTries :247]	Client: Timeout check
+----------
+
+~~Wed Apr 13 11:07:41 2022
+[./../src/client.c : readFile :317]	Receiving actual file
+----------
+
+~~Wed Apr 13 11:07:41 2022
+[./../src/client.c : readFile :374]	Client: Sending ack packet data
+----------
+
+~~Wed Apr 13 11:08:00 2022
+[./../src/client.c : readFile :317]	Receiving actual file
+----------
+
+~~Wed Apr 13 11:08:00 2022
+[./../src/client.c : readFile :374]	Client: Sending ack packet data
+----------
+
+~~Wed Apr 13 11:08:00 2022
+[./../src/client.c : readFile :374]	Client: Sending ack packet data
+----------
+
+~~Wed Apr 13 11:08:00 2022
+[./../src/client.c : readFile :374]	Client: Sending ack packet data
+----------
+
+~~Wed Apr 13 11:08:00 2022
+[./../src/client.c : readFile :374]	Client: Sending ack packet data
+----------
+
+~~Wed Apr 13 11:08:00 2022
+[./../src/client.c : readFile :374]	Client: Sending ack packet data
+----------
+
+~~Wed Apr 13 11:08:20 2022
+[./../src/client.c : readFile :317]	Receiving actual file
+----------
+
+~~Wed Apr 13 11:08:20 2022
+[./../src/client.c : readFile :374]	Client: Sending ack packet data
+----------
+
+~~Wed Apr 13 11:08:40 2022
+[./../src/client.c : readFile :317]	Receiving actual file
+----------
+
+~~Wed Apr 13 11:08:48 2022
+[./../src/client.c : writeFile :431]	Client: Max tries function call
+----------
+
+~~Wed Apr 13 11:08:48 2022
+[./../src/client.c : maxTries :234]	Max tries function
+----------
+
+~~Wed Apr 13 11:08:48 2022
+[./../src/client.c : maxTries :247]	Client: Timeout check
+----------
+
+~~Wed Apr 13 11:08:54 2022
+[./../src/client.c : writeFile :431]	Client: Max tries function call
+----------
+
+~~Wed Apr 13 11:08:54 2022
+[./../src/client.c : maxTries :234]	Max tries function
+----------
+
+~~Wed Apr 13 11:08:54 2022
+[./../src/client.c : maxTries :247]	Client: Timeout check
+----------
+
+~~Wed Apr 13 11:08:54 2022
+[./../src/client.c : writeFile :452]	Calculating the size of file
+----------
+
+~~Wed Apr 13 11:08:54 2022
+[./../src/client.c : writeFile :481]	Sending file data packet
+----------
+
+~~Wed Apr 13 11:08:54 2022
+[./../src/client.c : maxTries :234]	Max tries function
+----------
+
+~~Wed Apr 13 11:08:54 2022
+[./../src/client.c : maxTries :247]	Client: Timeout check
+----------
+
+~~Wed Apr 13 11:09:07 2022
+[./../src/client.c : readFile :317]	Receiving actual file
+----------
+
+~~Wed Apr 13 11:09:07 2022
+[./../src/client.c : readFile :374]	Client: Sending ack packet data
+----------

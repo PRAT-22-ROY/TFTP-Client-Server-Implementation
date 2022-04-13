@@ -1,14 +1,14 @@
 /**********************************************************************************************
- **  FILENAME	      : SERVER_UTILITY.h	
+ **  FILENAME	      : client_utility.h	
  **
- **  DESCRIPTION      : This file defines macros and header files for source.c 
+ **  DESCRIPTION      : This file defines macros and header files for client.c and main.c 
  ** 
  **
  **  REVISION HISTORY :
  **  
  **  DATE	    NAME		   REFERENCE	    REASON
  **  ------------------------------------------------------------------------------------
- **  12 April 2022   Sprint_Group_5    TFTP_SRS   Sprint Assessment
+ **  12 April 2022   Sprint_Group_5         TFTP   Sprint Assessment
  **
  **
  **  Copyright @ 2022 Capgemini Engineering All Rights Reserved
@@ -58,7 +58,7 @@
  **
  **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		: char *str, int num		  
+ **  PARAMETERS	: char *str, int num		  
  **
  **  RETURN 		:  void
  **
@@ -70,7 +70,7 @@
  **
  **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		: char *filename  
+ **  PARAMETERS	: char *filename  
  **
  **  RETURN 		:  packet
  **
@@ -82,7 +82,7 @@
  **
  **  DESCRIPTION	: Funtion Prototype
  **
- **  PARAMETERS		: char *filename 			  
+ **  PARAMETERS	: char *filename 			  
  **
  **  RETURN 		:  packet
  **
@@ -94,7 +94,7 @@
  **
  **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		: int block, char *data 			  
+ **  PARAMETERS	: int block, char *data 			  
  **
  **  RETURN 		:  packet
  **
@@ -106,7 +106,7 @@
  **
  **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		: char* block			  
+ **  PARAMETERS	: char* block			  
  **
  **  RETURN 		:  packet
  **
@@ -118,7 +118,7 @@
  **
  **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		: char *errcode, char* errmsg 			  
+ **  PARAMETERS	: char *errcode, char* errmsg 			  
  **
  **  RETURN 		: packet
  **
@@ -130,7 +130,7 @@
  **
  **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		: struct sockaddr *sa  			  
+ **  PARAMETERS	: struct sockaddr *sa  			  
  **
  **  RETURN 		:  void
  **
@@ -142,8 +142,8 @@
  **
  **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		: int sockfd, char *buf, struct sockaddr_storage *their_addr,
-                   socklen_t addr_len			  
+ **  PARAMETERS	: int sockfd, char *buf, struct sockaddr_storage *their_addr,
+                         socklen_t addr_len			  
  **
  **  RETURN 		:  -2 or -1 or number of bytes received
  **
@@ -155,8 +155,8 @@
  **
  **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		: int sockfd,char *buf,struct sockaddr_storage *their_addr, socklen_t addr_len,
-                   struct addrinfo *res,char *last_messag 			  
+ **  PARAMETERS	: int sockfd,char *buf,struct sockaddr_storage *their_addr, socklen_t addr_len,
+                         struct addrinfo *res,char *last_messag 			  
  **
  **  RETURN 		: numBytes
  **
@@ -168,8 +168,8 @@
  **
  **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		: int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,
-                   char *file,char *server  			  
+ **  PARAMETERS	: int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,
+                         char *file,char *server  			  
  **
  **  RETURN 		:  EXIT_SUCCESS
  **
@@ -181,8 +181,8 @@
  **
  **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		: int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,
-                   char *file,char *server 			  
+ **  PARAMETERS	: int sockfd, struct sockaddr_storage their_addr,struct addrinfo *res,
+                         char *file,char *server 			  
  **
  **  RETURN 		: EXIT_SUCCESS
  **
@@ -194,7 +194,7 @@
  **
  **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		: int ret, const char *mesg  			  
+ **  PARAMETERS	: int ret, const char *mesg  			  
  **
  **  RETURN 		:  void
  **
@@ -206,8 +206,8 @@
  **
  **  DESCRIPTION	: Function Prototype
  **
- **  PARAMETERS		: char* message, char logType,const char *funcName,
-                   int lineNo  			  
+ **  PARAMETERS	: char* message, char logType,const char *funcName,
+                         int lineNo  			  
  **
  **  RETURN 		: EXIT_SUCCESS 
  **

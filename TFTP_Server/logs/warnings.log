@@ -58,3 +58,18 @@
 ~~Tue Apr 12 16:25:58 2022
 [./../src/server.c : main : 134]	Server: Write request unsuccesful
 ----------
+~~Wed Apr 13 11:08:40 2022
+[./../src/server.c : readRequest : 334]	Server: Error file not found
+----------
+~~Wed Apr 13 11:08:40 2022
+[./../src/server.c : main : 124]	Server: Read request unsuccesful
+----------
+~~Wed Apr 13 11:08:48 2022
+[./../src/server.c : writeRequest : 457]	Server: got error packet
+----------
+~~Wed Apr 13 11:08:48 2022
+[./../src/server.c : main : 136]	Server: Write request unsuccesful
+----------
+~~Wed Apr 13 11:08:54 2022
+[./../src/server.c : main : 136]	Server: Write request unsuccesful
+----------

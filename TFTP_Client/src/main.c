@@ -1,12 +1,12 @@
 /**********************************************************************************************
  **  FILENAME	      : main.c	
  **
- **  DESCRIPTION      : entry point to the client program. 
- ** 
+ **  DESCRIPTION      : In this file we set up the TFTP client configuration and perform 
+ ** 			 file read and write operations based on user input
  **
  **  REVISION HISTORY :
  **  
- **  DATE	    NAME	      REFERENCE	                REASON
+ **  DATE	    NAME	           REFERENCE	                REASON
  **  ------------------------------------------------------------------------------------
  **  04 April 2022    Sprint_Group_5    TFTP_01,TFTP01      Sprint Assessment
  **
@@ -25,11 +25,12 @@
 /*******************************************************************
  **  FUNCTION NAME	: main
  **
- **  DESCRIPTION	: performs client configuration and calls readFile or writeFile based on the users input.
+ **  DESCRIPTION	:It sets up the client configuration and calls 
+ **			 readFile or writeFile functions based on the user input.
  **
- **  PARAMETERS		: int argc, char *argv[]
+ **  PARAMETERS	: int argc, char *argv[]
  **
- **  RETURN 		: returns 0
+ **  RETURN 		: returns EXIT_SUCCESS
  **
  ******************************************************************/
 int main(int argc, char* argv[])
@@ -101,5 +102,5 @@ int main(int argc, char* argv[])
 	/* Main implementation ends */
 	freeaddrinfo(servinfo);
 	close(sockfd);
-	return 0;
+	return EXIT_SUCCESS;
 }
